@@ -20,11 +20,23 @@ export default {
         primary: {
           "500": "#248FF4",
         },
+        light: {
+          "900": "#FFFFFF",
+          "800": "#F4F4F4",
+          "700": "#D9D9D9",
+          "600": "#BFBFBF",
+          "500": "#ABABAB",
+          "400": "#78838B",
+          "300": "#374957",
+          "200": "#202B34",
+          "100": "#10171C",
+        },
       },
       fontFamily: {
         poppins: ["var(--font-poppins)"],
       },
     },
   },
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;

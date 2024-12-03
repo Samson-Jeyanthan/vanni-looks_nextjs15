@@ -4,6 +4,7 @@ import "./globals.css";
 
 // eslint-disable-next-line camelcase
 import { Host_Grotesk } from "next/font/google";
+import { ThemeProvider } from "@/context/ThemeProvider";
 
 const hostGrotesk = Host_Grotesk({
   subsets: ["latin"],
@@ -23,8 +24,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${hostGrotesk.variable} antialiased`}>{children}</body>
+    <html lang="en" className="scroll-smooth">
+      <body className={`${hostGrotesk.variable} antialiased`}>
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
     </html>
   );
 }
