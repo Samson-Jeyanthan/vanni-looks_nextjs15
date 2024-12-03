@@ -1,5 +1,13 @@
+import { AboutUs, Categories, HeroSection } from "@/components/shared";
+
 const HomePage = () => {
-  return <div>HomePage & more</div>;
+  return (
+    <section className="flex w-full max-w-7xl flex-col items-center justify-center">
+      <HeroSection />
+      <AboutUs />
+      <Categories />
+    </section>
+  );
 };
 
 export default HomePage;

@@ -9,6 +9,26 @@ body {
 }
 
 @layer utilities {
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+
+  .flex-between {
+    @apply flex justify-between items-center;
+  }
+
+  .flex-start {
+    @apply flex justify-start items-center;
+  }
+
+  .flex-end {
+    @apply flex justify-end items-center;
+  }
+
+  .no-focus {
+    @apply ring-0 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0  outline-none !important;
+  }
 }
+
 @layer base {
 }
