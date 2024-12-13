@@ -11,7 +11,7 @@ const Categories = () => {
         {CategoriesData.map((category, index) => (
           <div
             key={index}
-            className="flex w-full flex-col gap-2 rounded-xl bg-light-700 py-4 text-light-100"
+            className="flex w-full flex-col gap-2 rounded-xl bg-light-700 py-4 text-light-150"
           >
             {category.title}
           </div>

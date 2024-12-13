@@ -1,4 +1,10 @@
-import { AboutUs, Categories, HeroSection } from "@/components/shared";
+import {
+  AboutUs,
+  Categories,
+  HeroSection,
+  LocationCard,
+  Services,
+} from "@/components/shared";
 
 const HomePage = () => {
   return (
@@ -6,6 +12,8 @@ const HomePage = () => {
       <HeroSection />
       <AboutUs />
       <Categories />
+      <LocationCard />
+      <Services />
     </section>
   );
 };
