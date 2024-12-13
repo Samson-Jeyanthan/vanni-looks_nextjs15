@@ -4,7 +4,7 @@ const AboutUs = () => {
   return (
     <div
       id="aboutus"
-      className="flex h-full items-start justify-between gap-5 border-b border-light-500 py-20"
+      className="flex h-full max-w-7xl items-start justify-between gap-5 border-b border-light-500 py-20"
     >
       <h1 className="w-[45%] text-[68px] font-bold leading-snug">
         Empowering Local Businesses with Strategic Marketing

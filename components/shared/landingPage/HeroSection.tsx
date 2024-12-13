@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const HeroSection = () => {
   return (
-    <div className="h-[85vh] w-full rounded-3xl">
+    <div className="h-[85vh] w-full max-w-7xl rounded-3xl">
       <Image
         src="/images/hero-1.jpg"
         width={1000}

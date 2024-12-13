@@ -1,9 +1,24 @@
+import { ServiceCard } from "@/components/cards";
+import { ServicesData } from "@/constants";
+
 const Services = () => {
   return (
-    <div className="flex w-full flex-col gap-8 bg-light-150 p-20">
+    <div className="flex w-full flex-col items-center gap-20 bg-light-150 p-20">
       <h2 className="text-center text-4xl font-semibold text-light-900">
         Services We Provide
       </h2>
+
+      <div className="flex max-w-7xl flex-wrap justify-center gap-8">
+        {ServicesData.map((service, index) => (
+          <ServiceCard
+            key={index}
+            title={service.title}
+            description={service.description}
+            image={service.image}
+            isShort={service.isShort}
+          />
+        ))}
+      </div>
     </div>
   );
 };

@@ -3,7 +3,7 @@ import React from "react";
 
 const Categories = () => {
   return (
-    <div className="flex-center w-full flex-col gap-8 py-16">
+    <div className="flex-center w-full max-w-7xl flex-col gap-8 py-16">
       <h1 className="text-4xl font-bold">
         Explore Local Businesses by Categories
       </h1>

@@ -8,7 +8,7 @@ import {
 
 const HomePage = () => {
   return (
-    <section className="flex w-full max-w-7xl flex-col items-center justify-center">
+    <section className="flex w-full flex-col items-center justify-center">
       <HeroSection />
       <AboutUs />
       <Categories />

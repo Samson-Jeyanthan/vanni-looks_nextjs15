@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const LocationCard = () => {
   return (
-    <article className="flex w-full justify-between gap-20 rounded-3xl bg-light-900 p-10 shadow-lg">
+    <article className="flex w-full max-w-7xl justify-between gap-20 rounded-3xl bg-light-900 p-10 shadow-lg">
       <div className="flex w-3/5 flex-col gap-8">
         <h2 className="text-4xl font-bold">
           Put Your Business in the Spot light - Start your marketing journey
