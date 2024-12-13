@@ -3,7 +3,9 @@ import {
   Categories,
   HeroSection,
   LocationCard,
+  SaleIncreaseCard,
   Services,
+  SocialMedia,
 } from "@/components/shared";
 
 const HomePage = () => {
@@ -14,6 +16,8 @@ const HomePage = () => {
       <Categories />
       <LocationCard />
       <Services />
+      <SocialMedia />
+      <SaleIncreaseCard />
     </section>
   );
 };

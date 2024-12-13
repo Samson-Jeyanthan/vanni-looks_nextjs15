@@ -2,13 +2,13 @@ import Image from "next/image";
 
 const LocationCard = () => {
   return (
-    <article className="flex w-full max-w-7xl justify-between gap-20 rounded-3xl bg-light-900 p-10 shadow-lg">
+    <article className="z-10 -mb-10 flex w-full max-w-7xl justify-between gap-20 rounded-3xl bg-light-900 p-12 shadow-lg">
       <div className="flex w-3/5 flex-col gap-8">
         <h2 className="text-4xl font-bold">
-          Put Your Business in the Spot light - Start your marketing journey
-          with us
+          Put Your Business in the Spotlight - Start Your Marketing Journey with
+          Us
         </h2>
-        <p className="w-[90%] text-justify text-xl font-medium">
+        <p className="w-[90%] text-justify text-lg font-medium">
           At vanni looks, we put your business at the center of attention. with
           tailored marketing startegies and social media expertise, we help you
           attract the right audience, boost visibility, and achieve growth.

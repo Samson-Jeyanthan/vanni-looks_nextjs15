@@ -1,9 +1,10 @@
 import { ServiceCard } from "@/components/cards";
+import { Button } from "@/components/ui/button";
 import { ServicesData } from "@/constants";
 
 const Services = () => {
   return (
-    <div className="flex w-full flex-col items-center gap-20 bg-light-150 p-20">
+    <div className="flex w-full flex-col items-center gap-20 bg-light-150 p-20 pt-28">
       <h2 className="text-center text-4xl font-semibold text-light-900">
         Services We Provide
       </h2>
@@ -19,6 +20,10 @@ const Services = () => {
           />
         ))}
       </div>
+
+      <Button className="rounded-full border-none bg-light-900 text-sm text-light-100">
+        Further Details
+      </Button>
     </div>
   );
 };

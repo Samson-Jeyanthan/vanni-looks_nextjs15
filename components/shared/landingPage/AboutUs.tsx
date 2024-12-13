@@ -9,7 +9,7 @@ const AboutUs = () => {
       <h1 className="w-[45%] text-[68px] font-bold leading-snug">
         Empowering Local Businesses with Strategic Marketing
       </h1>
-      <p className="mt-40 w-2/5 text-justify text-xl font-medium">
+      <p className="mt-48 w-2/5 text-left text-xl font-medium">
         Vanni Looks is your trusted partner in amplifying the reach and impact
         of local businesses. We specialize in comprehensive marketing solutions,
         from social media advertising to targeted campaigns that bring
