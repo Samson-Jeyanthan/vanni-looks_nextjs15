@@ -3,3 +3,8 @@ export type TConvertedSvgJsxProps = {
   width?: string;
   fill?: string;
 };
+
+export type TCategoryProps = {
+  title: string;
+  icon: string;
+};

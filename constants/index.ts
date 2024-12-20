@@ -1,42 +1,56 @@
-import React from "react";
-import { IconType } from "react-icons";
-import { TConvertedSvgJsxProps } from "@/types/utils.types";
-import { IoMdMoon } from "react-icons/io";
-import { TbSunHigh } from "react-icons/tb";
-
 interface CategoriesProps {
   title: string;
-  icon: IconType | React.ComponentType<TConvertedSvgJsxProps>;
+  icon: string;
 }
 
 export const CategoriesData: CategoriesProps[] = [
   {
-    title: "Category 1",
-    icon: IoMdMoon,
+    title: "Grocery Stores",
+    icon: "/svgs/sample-category-icon.svg",
   },
   {
-    title: "Category 1",
-    icon: TbSunHigh,
+    title: "Beauty & Fashion",
+    icon: "/svgs/sample-category-icon.svg",
   },
   {
-    title: "Category 1",
-    icon: TbSunHigh,
+    title: "Grocery Stores",
+    icon: "/svgs/sample-category-icon.svg",
   },
   {
-    title: "Category 1",
-    icon: IoMdMoon,
+    title: "Beauty & Fashion",
+    icon: "/svgs/sample-category-icon.svg",
   },
   {
-    title: "Category 1",
-    icon: TbSunHigh,
+    title: "Grocery Stores",
+    icon: "/svgs/sample-category-icon.svg",
   },
   {
-    title: "Category 1",
-    icon: TbSunHigh,
+    title: "Beauty & Fashion",
+    icon: "/svgs/sample-category-icon.svg",
   },
   {
-    title: "Category 1",
-    icon: IoMdMoon,
+    title: "Grocery Stores",
+    icon: "/svgs/sample-category-icon.svg",
+  },
+  {
+    title: "Grocery Stores",
+    icon: "/svgs/sample-category-icon.svg",
+  },
+  {
+    title: "Beauty & Fashion",
+    icon: "/svgs/sample-category-icon.svg",
+  },
+  {
+    title: "Grocery Stores",
+    icon: "/svgs/sample-category-icon.svg",
+  },
+  {
+    title: "Beauty & Fashion",
+    icon: "/svgs/sample-category-icon.svg",
+  },
+  {
+    title: "Grocery Stores",
+    icon: "/svgs/sample-category-icon.svg",
   },
 ];
 
