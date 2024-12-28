@@ -5,7 +5,7 @@ import { ServicesData } from "@/constants";
 const Services = () => {
   return (
     <div className="flex w-full flex-col items-center gap-20 bg-light-150 p-20 pt-28">
-      <h2 className="text-center text-4xl font-semibold text-light-900">
+      <h2 className="gradient-title-dark-bg bg-clip-text text-center text-4xl font-semibold text-transparent">
         Services We Provide
       </h2>
 

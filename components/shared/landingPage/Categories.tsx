@@ -3,7 +3,7 @@ import { CategoriesData } from "@/constants";
 
 const Categories = () => {
   return (
-    <div className="flex-center w-full max-w-7xl flex-col gap-16 py-16">
+    <div className="flex-center mb-20 w-full max-w-7xl flex-col gap-16 border-y border-light-500 py-20">
       <h1 className="text-4xl font-bold">
         Explore Local Businesses by Categories
       </h1>

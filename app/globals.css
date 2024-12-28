@@ -4,6 +4,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("../styles/theme.css");
+
 body {
   font-family: "Host Grotesk", sans-serif;
 }
@@ -30,5 +32,14 @@ body {
   }
 }
 
-@layer base {
+@layer components {
+  .gradient-title {
+    @apply bg-gradient-to-r from-light-150 to-primary-500 bg-clip-text text-transparent;
+  }
+  .gradient-title-dark-bg {
+    @apply bg-gradient-to-r from-primary-500 to-light-900 bg-clip-text text-transparent;
+  }
+  .hero-input {
+    @apply no-focus border-none bg-transparent placeholder:text-light-400 placeholder:font-medium placeholder:text-sm px-2 py-4 !important;
+  }
 }
