@@ -28,7 +28,11 @@ body {
   }
 
   .no-focus {
-    @apply ring-0 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0  outline-none !important;
+    @apply ring-0 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0 outline-none !important;
+  }
+
+  .no-focus-blue {
+    @apply ring-0 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0 outline-none !important;
   }
 }
 
