@@ -16,12 +16,18 @@ import { Form, FormField } from "../ui/form";
 import { FormInput, IconInput } from "../inputs";
 import { IMediaProps } from "@/types/utils.types";
 import { Button } from "../ui/button";
+import { CreateMainCategoryAction } from "@/lib/actions/categories.action";
+import { usePathname } from "next/navigation";
+import { toast } from "sonner";
+import { FaPlus } from "react-icons/fa6";
 
 interface Props {
   type: "edit" | "create";
 }
 
 const CreateCategory = ({ type }: Props) => {
+  const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
   const form = useForm<z.infer<typeof MainCategoriesSchema>>({
     resolver: zodResolver(MainCategoriesSchema),
     defaultValues: {
@@ -32,18 +38,37 @@ const CreateCategory = ({ type }: Props) => {
   const [error, setError] = useState("");
 
   const [previousMedia, setPreviousMedia] = useState<IMediaProps>({
-    mediaType: "",
+    mediaType: "svg",
     mediaURL: "",
     thumbnailURL: "",
   });
 
   async function onSubmit(values: z.infer<typeof MainCategoriesSchema>) {
     console.log(values);
+    try {
+      const res = await CreateMainCategoryAction({
+        title: values.title.toLowerCase(),
+        icon: previousMedia,
+        path: pathname,
+      });
+
+      if (res.status === "200") {
+        toast.success(res.message);
+      } else {
+        toast.error(res.message);
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsOpen(false);
+      form.reset();
+    }
   }
 
   return (
-    <Dialog>
-      <DialogTrigger className="px-3 py-2 bg-primary-500 text-light-900 font-medium rounded-lg">
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+      <DialogTrigger className="flex gap-2 items-center p-3 bg-primary-500 text-light-900 font-medium rounded-lg">
+        <FaPlus />
         Create Main Category
       </DialogTrigger>
       <DialogContent aria-describedby={undefined} className="bg-light-900">
@@ -71,8 +96,12 @@ const CreateCategory = ({ type }: Props) => {
                 inputName="title"
                 formLabel="Category Name"
               />
-              <Button className="bg-primary-500 text-light-900 w-full">
-                Create
+              <Button
+                className="bg-primary-500 text-light-900 w-full"
+                type="submit"
+                disabled={form.formState.isSubmitting}
+              >
+                {form.formState.isSubmitting ? "Creating..." : "Create"}
               </Button>
             </form>
           </Form>

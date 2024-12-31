@@ -1,4 +1,5 @@
 import { LeftSidebar } from "@/components/shared/admin";
+import { Toaster } from "@/components/ui/sonner";
 
 export default function AdminLayout({
   children,
@@ -12,6 +13,7 @@ export default function AdminLayout({
       <section className="flex w-full flex-col p-10 items-center">
         <div className="flex mx-auto w-full max-w-7xl">{children}</div>
       </section>
+      <Toaster />
     </main>
   );
 }

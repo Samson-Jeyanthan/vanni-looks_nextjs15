@@ -7,10 +7,8 @@ import {
   Services,
   SocialMedia,
 } from "@/components/shared";
-import { CreateCategoryAction } from "@/lib/actions/categories.action";
 
 const HomePage = async () => {
-  await CreateCategoryAction({});
   return (
     <section className="flex w-full flex-col items-center justify-center">
       <HeroSection />

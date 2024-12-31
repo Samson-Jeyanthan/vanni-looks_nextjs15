@@ -1,5 +1,6 @@
-import { Footer, Navbar } from "@/components/shared";
 import React from "react";
+import { Footer, Navbar } from "@/components/shared";
+import { Toaster } from "@/components/ui/sonner";
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -9,6 +10,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
         {children}
       </section>
       <Footer />
+      <Toaster />
     </main>
   );
 };
