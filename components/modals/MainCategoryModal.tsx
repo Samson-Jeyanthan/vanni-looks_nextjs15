@@ -69,7 +69,7 @@ const CreateCategory = ({ type }: Props) => {
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger className="flex gap-2 items-center p-3 bg-primary-500 text-light-900 font-medium rounded-lg">
         <FaPlus />
-        Create Main Category
+        Add Main Category
       </DialogTrigger>
       <DialogContent aria-describedby={undefined} className="bg-light-900">
         <DialogHeader>

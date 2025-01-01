@@ -1,4 +1,4 @@
-import { CreateCategoryModal } from "@/components/modals";
+import { MainCategoryModal } from "@/components/modals";
 import { GetAllMainCategoriesAction } from "@/lib/actions/categories.action";
 import {
   Table,
@@ -21,7 +21,7 @@ const MainCategories = async () => {
 
       <div className="flex justify-between w-full">
         search bar
-        <CreateCategoryModal type="create" />
+        <MainCategoryModal type="create" />
       </div>
 
       <Table>

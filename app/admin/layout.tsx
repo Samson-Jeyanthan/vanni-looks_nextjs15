@@ -10,7 +10,7 @@ export default function AdminLayout({
     <main className="flex bg-light-800 min-h-screen w-full">
       <LeftSidebar />
 
-      <section className="flex w-full flex-col p-10 items-center">
+      <section className="flex w-full flex-col p-12 items-center">
         <div className="flex mx-auto w-full max-w-7xl">{children}</div>
       </section>
       <Toaster />

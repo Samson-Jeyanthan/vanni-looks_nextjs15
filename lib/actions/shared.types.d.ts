@@ -3,3 +3,9 @@ export type TMainCategoryParams = {
   icon?: IMediaProps;
   path: string;
 };
+
+export type TSubCategoryParams = {
+  title: string;
+  mainCategoryId: string;
+  path: string;
+};
