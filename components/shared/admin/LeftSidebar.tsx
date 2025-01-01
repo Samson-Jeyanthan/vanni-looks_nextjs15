@@ -26,7 +26,7 @@ const LeftSidebar = () => {
               <Link
                 key={index}
                 href={item.route}
-                className={`${isActive ? "bg-primary-500/30 text-light-100 font-medium" : "hover:bg-light-800 hover:font-medium"} flex-between w-full p-4 py-3 rounded-lg`}
+                className={`${isActive ? "bg-primary-500/30 text-light-100 font-medium" : "hover:bg-light-800 hover:font-medium"} flex-between w-full p-4 py-2.5 rounded-lg`}
               >
                 <p className="text-sm">{item.name}</p>
                 {isActive && <IoIosArrowForward />}

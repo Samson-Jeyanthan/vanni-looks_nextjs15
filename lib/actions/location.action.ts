@@ -3,7 +3,7 @@
 import District from "@/database/district.model";
 import { connectToDatabase } from "../mongoose";
 import { revalidatePath } from "next/cache";
-import { TCityParams, TDistrictParams } from "./shared.types";
+import { TCityParams, TDeleteParams, TDistrictParams } from "./shared.types";
 import City from "@/database/city.model";
 
 export async function createDistrictAction(params: TDistrictParams) {
@@ -44,6 +44,70 @@ export async function getAllDistrictsAction() {
     return {
       status: "500",
       message: "Error fetching districts",
+    };
+  }
+}
+
+export async function getDistrictById(params: { districtId: string }) {
+  try {
+    connectToDatabase();
+
+    const { districtId } = params;
+
+    const district = await District.findById(districtId);
+
+    return {
+      status: "200",
+      data: district,
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      status: "500",
+      message: "Error fetching district detail",
+    };
+  }
+}
+
+export async function editDistrictAction(params: TDistrictParams) {
+  const { _id, name, path } = params;
+
+  await District.findByIdAndUpdate(_id, { name });
+
+  revalidatePath(path);
+  try {
+    connectToDatabase();
+    return {
+      status: "200",
+      message: "Detail updated successfully",
+    };
+  } catch (error) {
+    return {
+      status: "500",
+      message: "Error fetching",
+    };
+  }
+}
+
+export async function deleteDistrictAction(params: TDeleteParams) {
+  try {
+    connectToDatabase();
+
+    const { _id, path } = params;
+
+    await District.deleteOne({ _id });
+    await City.deleteMany({ districtId: _id });
+
+    revalidatePath(path);
+
+    return {
+      status: "200",
+      message: "District deleted successfully",
+    };
+  } catch (error) {
+    return {
+      status: "500",
+      message: "Error deleting district",
     };
   }
 }
@@ -98,6 +162,28 @@ export async function getAllCitiesAction() {
     };
   }
 }
+
+export async function deleteCityAction(params: TDeleteParams) {
+  try {
+    connectToDatabase();
+    const { _id, path } = params;
+
+    await City.deleteOne({ _id });
+
+    revalidatePath(path);
+
+    return {
+      status: "200",
+      message: "City deleted successfully",
+    };
+  } catch (error) {
+    return {
+      status: "500",
+      message: "Error deleting city",
+    };
+  }
+}
+
 // export async function createDistrictAction() {
 //   try {
 //     connectToDatabase();

@@ -1,4 +1,8 @@
-import { CityModal, DisctrictModal } from "@/components/modals";
+import {
+  CityModal,
+  ConfirmDeleteModal,
+  DisctrictModal,
+} from "@/components/modals";
 import {
   Table,
   TableBody,
@@ -47,15 +51,23 @@ const Cities = async () => {
         </TableHeader>
         <TableBody>
           {results?.data?.map((data, index) => (
-            <TableRow key={index}>
+            <TableRow key={index} className="hover:bg-light-750">
               <TableCell>{index + 1}</TableCell>
               <TableCell className="capitalize">{data.cityName}</TableCell>
               <TableCell className="capitalize">
                 {data.districtId.name}
               </TableCell>
               <TableCell>{getConvertedDate(data.createdAt)}</TableCell>
-              <TableCell className="flex justify-end">
-                <AdminEditActionBtns />
+              <TableCell className="flex-center gap-3">
+                <CityModal
+                  type="edit"
+                  cityDetails={JSON.stringify(data)}
+                  districtData={JSON.stringify(districtsData?.data)}
+                />
+                <ConfirmDeleteModal
+                  type="city"
+                  itemId={JSON.stringify(data._id)}
+                />
               </TableCell>
             </TableRow>
           ))}

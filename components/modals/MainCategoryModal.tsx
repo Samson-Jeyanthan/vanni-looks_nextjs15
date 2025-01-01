@@ -16,7 +16,7 @@ import { Form, FormField } from "../ui/form";
 import { FormInput, IconInput } from "../inputs";
 import { IMediaProps } from "@/types/utils.types";
 import { Button } from "../ui/button";
-import { CreateMainCategoryAction } from "@/lib/actions/categories.action";
+import { createMainCategoryAction } from "@/lib/actions/categories.action";
 import { usePathname } from "next/navigation";
 import { toast } from "sonner";
 import { FaPlus } from "react-icons/fa6";
@@ -46,7 +46,7 @@ const CreateCategory = ({ type }: Props) => {
   async function onSubmit(values: z.infer<typeof MainCategoriesSchema>) {
     console.log(values);
     try {
-      const res = await CreateMainCategoryAction({
+      const res = await createMainCategoryAction({
         title: values.title.toLowerCase(),
         icon: previousMedia,
         path: pathname,

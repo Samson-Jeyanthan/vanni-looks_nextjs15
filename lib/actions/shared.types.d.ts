@@ -11,12 +11,19 @@ export type TSubCategoryParams = {
 };
 
 export type TDistrictParams = {
+  _id?: string;
   name: string;
   path: string;
 };
 
 export type TCityParams = {
+  _id?: string;
   districtId: string;
   cityName: string;
+  path: string;
+};
+
+export type TDeleteParams = {
+  _id: string;
   path: string;
 };

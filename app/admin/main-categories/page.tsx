@@ -43,7 +43,7 @@ const MainCategories = async () => {
         </TableHeader>
         <TableBody>
           {results?.data?.map((data, index) => (
-            <TableRow key={index}>
+            <TableRow key={index} className="hover:bg-light-750">
               <TableCell>{index + 1}</TableCell>
               <TableCell>{data.icon?.mediaType}</TableCell>
               <TableCell>{data.title}</TableCell>

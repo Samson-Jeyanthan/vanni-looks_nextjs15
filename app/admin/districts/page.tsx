@@ -1,4 +1,4 @@
-import { DisctrictModal } from "@/components/modals";
+import { ConfirmDeleteModal, DisctrictModal } from "@/components/modals";
 import {
   Table,
   TableBody,
@@ -8,7 +8,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { AdminEditActionBtns } from "@/components/buttons";
 import { getConvertedDate } from "@/lib/utils";
 import { getAllDistrictsAction } from "@/lib/actions/location.action";
 import { LocalSearchbar } from "@/components/inputs";
@@ -35,19 +34,26 @@ const Districts = async () => {
         <TableHeader>
           <TableRow>
             <TableHead className="w-20">No</TableHead>
-            <TableHead>Districts Name</TableHead>
+            <TableHead>District Name</TableHead>
             <TableHead>Created On</TableHead>
             <TableHead className="text-center w-32">Actions</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {results?.data?.map((data, index) => (
-            <TableRow key={index}>
+            <TableRow key={index} className="hover:bg-light-750">
               <TableCell>{index + 1}</TableCell>
               <TableCell className="capitalize">{data.name}</TableCell>
               <TableCell>{getConvertedDate(data.createdAt)}</TableCell>
-              <TableCell className="flex justify-end">
-                <AdminEditActionBtns />
+              <TableCell className="flex-center gap-3">
+                <DisctrictModal
+                  type="edit"
+                  districtDetails={JSON.stringify(data)}
+                />
+                <ConfirmDeleteModal
+                  type="district"
+                  itemId={JSON.stringify(data._id)}
+                />
               </TableCell>
             </TableRow>
           ))}
