@@ -9,3 +9,14 @@ export type TSubCategoryParams = {
   mainCategoryId: string;
   path: string;
 };
+
+export type TDistrictParams = {
+  name: string;
+  path: string;
+};
+
+export type TCityParams = {
+  districtId: string;
+  cityName: string;
+  path: string;
+};

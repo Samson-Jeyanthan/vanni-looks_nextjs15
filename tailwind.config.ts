@@ -22,7 +22,9 @@ export default {
         },
         light: {
           "900": "#FFFFFF",
+          "850": "#F9F9F9",
           "800": "#F4F4F4",
+          "750": "#E4E4E4",
           "700": "#D9D9D9",
           "600": "#BFBFBF",
           "500": "#ABABAB",

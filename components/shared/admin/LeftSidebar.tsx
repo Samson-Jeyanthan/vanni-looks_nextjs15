@@ -1,21 +1,23 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
 import { LEFT_SIDEBAR_LINKS } from "@/constants";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { DiAtom } from "react-icons/di";
+import { IoIosArrowForward } from "react-icons/io";
 
 const LeftSidebar = () => {
   const pathname = usePathname();
   return (
-    <aside className="w-72 min-w-72 sticky top-0 left-0 min-h-screen bg-light-900 p-4 flex flex-col justify-between">
-      <div className="flex flex-col gap-10">
-        <header className="flex-start w-max gap-2 text-xl font-bold text-primary-500">
+    <aside className="w-[16rem] min-w-[16rem] sticky top-0 left-0 min-h-screen bg-light-900 p-4 flex flex-col justify-between">
+      <div className="flex flex-col gap-10 pt-6">
+        <header className="flex-start w-max gap-2 text-2xl font-bold text-primary-500">
           <DiAtom className="text-4xl" />
           <h1>Vanni Looks</h1>
         </header>
 
-        <div className="flex gap-4 flex-col">
+        <div className="flex gap-2 flex-col">
           {LEFT_SIDEBAR_LINKS.map((item, index) => {
             const isActive =
               (pathname.startsWith(item.route) && item.route.length > 1) ||
@@ -24,16 +26,17 @@ const LeftSidebar = () => {
               <Link
                 key={index}
                 href={item.route}
-                className={`${isActive ? "text-primary-500" : ""}`}
+                className={`${isActive ? "bg-primary-500/30 text-light-100 font-medium" : "hover:bg-light-800 hover:font-medium"} flex-between w-full p-4 py-3 rounded-lg`}
               >
                 <p className="text-sm">{item.name}</p>
+                {isActive && <IoIosArrowForward />}
               </Link>
             );
           })}
         </div>
       </div>
 
-      <div>Logout</div>
+      <Button className="bg-light-800 hover:bg-primary-500/30">Logout</Button>
     </aside>
   );
 };

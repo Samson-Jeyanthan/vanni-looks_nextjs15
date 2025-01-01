@@ -11,43 +11,34 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../ui/dialog";
-import { SubCategoriesSchema } from "@/lib/validations/admin.validation";
+import { DistrictsSchema } from "@/lib/validations/admin.validation";
 import { Form } from "../ui/form";
-import { Dropdown, FormInput } from "../inputs";
+import { FormInput } from "../inputs";
 import { Button } from "../ui/button";
-import { createSubCategoryAction } from "@/lib/actions/categories.action";
 import { usePathname } from "next/navigation";
 import { toast } from "sonner";
 import { FaPlus } from "react-icons/fa6";
+import { createDistrictAction } from "@/lib/actions/location.action";
 
 interface Props {
   type: "edit" | "create";
-  mainCategoryData: any;
 }
 
-const SubCategoryModal = ({ type, mainCategoryData }: Props) => {
-  const MAIN_CATEGORY_OPTIONS = JSON.parse(mainCategoryData)?.map(
-    (category: any) => ({
-      _id: category._id,
-      name: category.title,
-    })
-  );
+const DisctrictModal = ({ type }: Props) => {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
-  const form = useForm<z.infer<typeof SubCategoriesSchema>>({
-    resolver: zodResolver(SubCategoriesSchema),
+  const form = useForm<z.infer<typeof DistrictsSchema>>({
+    resolver: zodResolver(DistrictsSchema),
     defaultValues: {
-      title: "",
-      mainCategoryId: "",
+      district: "",
     },
   });
 
-  async function onSubmit(values: z.infer<typeof SubCategoriesSchema>) {
+  async function onSubmit(values: z.infer<typeof DistrictsSchema>) {
     console.log(values);
     try {
-      const res = await createSubCategoryAction({
-        title: values.title.toLowerCase(),
-        mainCategoryId: values.mainCategoryId,
+      const res = await createDistrictAction({
+        name: values.district.toLowerCase(),
         path: pathname,
       });
 
@@ -68,26 +59,20 @@ const SubCategoryModal = ({ type, mainCategoryData }: Props) => {
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger className="flex gap-2 items-center p-3 bg-primary-500 text-light-900 font-medium rounded-lg">
         <FaPlus />
-        Add Sub Category
+        Add District
       </DialogTrigger>
       <DialogContent aria-describedby={undefined} className="bg-light-900">
         <DialogHeader>
-          <DialogTitle>Create Sub Category</DialogTitle>
+          <DialogTitle>Create District</DialogTitle>
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
               className="flex flex-col gap-4 pt-4"
             >
-              <Dropdown
-                form={form}
-                inputName="mainCategoryId"
-                formLabel="Choose Main Category"
-                options={MAIN_CATEGORY_OPTIONS}
-              />
               <FormInput
                 form={form}
-                inputName="title"
-                formLabel="Sub Category Name"
+                inputName="district"
+                formLabel="District Name"
               />
               <Button
                 className="bg-primary-500 text-light-900 w-full"
@@ -104,4 +89,4 @@ const SubCategoryModal = ({ type, mainCategoryData }: Props) => {
   );
 };
 
-export default SubCategoryModal;
+export default DisctrictModal;

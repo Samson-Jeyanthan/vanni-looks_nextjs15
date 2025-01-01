@@ -1,5 +1,5 @@
 import { MainCategoryModal } from "@/components/modals";
-import { GetAllMainCategoriesAction } from "@/lib/actions/categories.action";
+import { getAllMainCategoriesAction } from "@/lib/actions/categories.action";
 import {
   Table,
   TableBody,
@@ -11,16 +11,20 @@ import {
 } from "@/components/ui/table";
 import { AdminEditActionBtns } from "@/components/buttons";
 import { getConvertedDate } from "@/lib/utils";
+import { LocalSearchbar } from "@/components/inputs";
 
 const MainCategories = async () => {
-  const results = await GetAllMainCategoriesAction();
+  const results = await getAllMainCategoriesAction();
 
   return (
     <section className="w-full flex-col flex gap-8">
       <h1 className="text-3xl font-bold">Main Categories</h1>
 
-      <div className="flex justify-between w-full">
-        search bar
+      <div className="flex justify-between w-full gap-20">
+        <LocalSearchbar
+          placeholder="Search by main category"
+          iconPosition="left"
+        />
         <MainCategoryModal type="create" />
       </div>
 

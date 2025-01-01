@@ -3,10 +3,10 @@
 import { revalidatePath } from "next/cache";
 import { connectToDatabase } from "../mongoose";
 import { TMainCategoryParams, TSubCategoryParams } from "./shared.types";
-import MainCategory, { IMainCategory } from "@/database/mainCategory.model";
-import SubCategory, { ISubCategory } from "@/database/SubCategory.model";
+import MainCategory from "@/database/mainCategory.model";
+import SubCategory from "@/database/subCategory.model";
 
-export async function CreateMainCategoryAction(params: TMainCategoryParams) {
+export async function createMainCategoryAction(params: TMainCategoryParams) {
   try {
     connectToDatabase();
 
@@ -29,7 +29,7 @@ export async function CreateMainCategoryAction(params: TMainCategoryParams) {
   }
 }
 
-export async function GetAllMainCategoriesAction() {
+export async function getAllMainCategoriesAction() {
   try {
     connectToDatabase();
 
@@ -52,7 +52,7 @@ export async function GetAllMainCategoriesAction() {
 
 // Sub category actions ---------------------------------------------------
 
-export async function CreateSubCategoryAction(params: TSubCategoryParams) {
+export async function createSubCategoryAction(params: TSubCategoryParams) {
   try {
     connectToDatabase();
 
@@ -75,7 +75,7 @@ export async function CreateSubCategoryAction(params: TSubCategoryParams) {
   }
 }
 
-export async function GetAllSubCategoriesAction() {
+export async function getAllSubCategoriesAction() {
   try {
     connectToDatabase();
 

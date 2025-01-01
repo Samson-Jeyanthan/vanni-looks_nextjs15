@@ -98,26 +98,26 @@ export const LEFT_SIDEBAR_LINKS = [
   {
     // icon: HomeIcon,
     name: "Main Categories",
-    route: "main-categories",
+    route: "/admin/main-categories",
   },
   {
     // icon: HomeIcon,
     name: "Sub Categories",
-    route: "sub-categories",
+    route: "/admin/sub-categories",
   },
   {
     // icon: HomeIcon,
     name: "Districts",
-    route: "districts",
+    route: "/admin/districts",
   },
   {
     // icon: HomeIcon,
     name: "Cities",
-    route: "cities",
+    route: "/admin/cities",
   },
   {
     // icon: HomeIcon,
     name: "Businesses",
-    route: "businesses",
+    route: "/admin/businesses",
   },
 ];

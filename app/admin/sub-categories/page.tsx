@@ -1,7 +1,7 @@
 import { SubCategoryModal } from "@/components/modals";
 import {
-  GetAllMainCategoriesAction,
-  GetAllSubCategoriesAction,
+  getAllMainCategoriesAction,
+  getAllSubCategoriesAction,
 } from "@/lib/actions/categories.action";
 import {
   Table,
@@ -14,21 +14,21 @@ import {
 } from "@/components/ui/table";
 import { AdminEditActionBtns } from "@/components/buttons";
 import { getConvertedDate } from "@/lib/utils";
+import { LocalSearchbar } from "@/components/inputs";
 
 const SubCategories = async () => {
-  const mainCategoryData = await GetAllMainCategoriesAction();
-  const results = await GetAllSubCategoriesAction();
-
-  const stringifiedData = JSON.stringify(mainCategoryData?.data);
-
-  console.log(JSON.parse(stringifiedData));
+  const mainCategoryData = await getAllMainCategoriesAction();
+  const results = await getAllSubCategoriesAction();
 
   return (
     <section className="w-full flex-col flex gap-8">
       <h1 className="text-3xl font-bold">Sub Categories</h1>
 
-      <div className="flex justify-between w-full">
-        search bar
+      <div className="flex justify-between w-full gap-20">
+        <LocalSearchbar
+          placeholder="Search by sub category"
+          iconPosition="left"
+        />
         <SubCategoryModal
           type="create"
           mainCategoryData={JSON.stringify(mainCategoryData?.data)}
