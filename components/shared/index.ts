@@ -3,3 +3,7 @@ export { default as Footer } from "./Footer";
 export { default as HeroSection } from "./landingPage/HeroSection";
 export { default as AboutUs } from "./landingPage/AboutUs";
 export { default as Categories } from "./landingPage/Categories";
+export { default as LocationCard } from "./landingPage/LocationCard";
+export { default as Services } from "./landingPage/Services";
+export { default as SocialMedia } from "./landingPage/SocialMedia";
+export { default as SaleIncreaseCard } from "./landingPage/SaleIncreaseCard";

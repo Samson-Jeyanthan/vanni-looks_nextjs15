@@ -1,5 +1,7 @@
 import { Navbar } from "@/components/shared";
 import React from "react";
+import { Footer, Navbar } from "@/components/shared";
+import { Toaster } from "@/components/ui/sonner";
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -8,6 +10,8 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
       <section className="flex w-full flex-col items-center justify-center">
         {children}
       </section>
+      <Footer />
+      <Toaster />
     </main>
   );
 };

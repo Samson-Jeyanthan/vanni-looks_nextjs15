@@ -1,13 +1,23 @@
-import { AboutUs, Categories, HeroSection } from "@/components/shared";
+import {
+  AboutUs,
+  Categories,
+  HeroSection,
+  LocationCard,
+  SaleIncreaseCard,
+  Services,
+  SocialMedia,
+} from "@/components/shared";
 
-const HomePage = () => {
+const HomePage = async () => {
   return (
-    <section className="flex w-full max-w-7xl flex-col items-center justify-center">
+    <section className="flex w-full flex-col items-center justify-center">
       <HeroSection />
       <AboutUs />
       <Categories />
-    </section>
-  );
-};
+      <LocationCard />
+      <Services />
+      <SocialMedia />
+      <SaleIncreaseCard />
+);
 
 export default HomePage;

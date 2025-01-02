@@ -3,3 +3,27 @@ export type TConvertedSvgJsxProps = {
   width?: string;
   fill?: string;
 };
+
+export type TCategoryProps = {
+  title: string;
+  icon: string;
+};
+
+export type TURLProps = {
+  params: { id: string };
+  searchParams: { [key: string]: string | undefined };
+};
+
+export interface ISearchParamsProps {
+  searchParams: { [key: string]: string | undefined };
+}
+
+export interface IParamsProps {
+  params: { id: string };
+}
+
+export interface IMediaProps {
+  mediaType: "image" | "video" | "audio" | "pdf" | "svg";
+  mediaURL: string;
+  thumbnailURL: string;
+}
