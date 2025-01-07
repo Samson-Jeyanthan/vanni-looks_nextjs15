@@ -1,4 +1,3 @@
-import { Navbar } from "@/components/shared";
 import React from "react";
 import { Footer, Navbar } from "@/components/shared";
 import { Toaster } from "@/components/ui/sonner";
