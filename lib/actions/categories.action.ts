@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { connectToDatabase } from "../mongoose";
 import { TMainCategoryParams, TSubCategoryParams } from "./shared.types";
 import MainCategory from "@/database/mainCategory.model";
-import SubCategory from "@/database/subCategory.model";
+import SubCategory from "@/database/SubCategory.model";
 
 export async function createMainCategoryAction(params: TMainCategoryParams) {
   try {
