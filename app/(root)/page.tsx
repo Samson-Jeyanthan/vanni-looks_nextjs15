@@ -18,6 +18,8 @@ const HomePage = async () => {
       <Services />
       <SocialMedia />
       <SaleIncreaseCard />
-);
+    </section>
+  );
+};
 
 export default HomePage;
