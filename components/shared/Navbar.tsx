@@ -19,6 +19,7 @@ const Navbar = () => {
         </Link>
         <Link href="/about">Categories</Link>
         <Link href="/about">Services</Link>
+        <Link href="/business-directory">Directory</Link>
         <Link href="/contact">
           <Button className="rounded-full border-none bg-primary-500 text-sm text-light-900">
             Contact Us
