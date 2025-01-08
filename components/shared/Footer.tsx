@@ -51,8 +51,8 @@ const Footer = () => {
       </div>
 
       <div className="flex-center z-10 w-full border-t border-light-300 pt-8 text-sm text-light-400">
-        © 2024 Vanni Looks. All Rights Reserved. | Designed and Developed By
-        Samson
+        © {new Date().getFullYear()} Vanni Looks. All Rights Reserved. |
+        Designed and Developed By Samson
       </div>
     </footer>
   );

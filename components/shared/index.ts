@@ -7,4 +7,5 @@ export { default as LocationCard } from "./landingPage/LocationCard";
 export { default as Services } from "./landingPage/Services";
 export { default as SocialMedia } from "./landingPage/SocialMedia";
 export { default as SaleIncreaseCard } from "./landingPage/SaleIncreaseCard";
-export { default as Filters } from "./filters/Filters";
+export { default as CategoriesFilters } from "./filters/CategoriesFilters";
+export { default as DistrictsFilters } from "./filters/DistrictsFilters";

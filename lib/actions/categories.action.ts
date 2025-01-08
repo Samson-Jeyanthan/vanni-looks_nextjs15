@@ -100,3 +100,24 @@ export async function getAllSubCategoriesAction() {
     };
   }
 }
+
+export async function getSubCategoriesByMainCategoryId(mainCategoryId: string) {
+  try {
+    connectToDatabase();
+
+    const subCategories = await SubCategory.find({ mainCategoryId }).sort({
+      createdAt: -1,
+    });
+
+    return {
+      status: "200",
+      data: subCategories,
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      status: "500",
+      message: "Error fetching sub categories",
+    };
+  }
+}
