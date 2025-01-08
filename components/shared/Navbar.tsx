@@ -14,13 +14,13 @@ const Navbar = () => {
       </Link>
 
       <div className="flex-between gap-6 text-sm">
-        <Link href="#aboutus" scroll={true}>
+        <Link href="/#aboutus" scroll={true}>
           About
         </Link>
-        <Link href="/about">Categories</Link>
-        <Link href="/about">Services</Link>
+        <Link href="/#categories">Categories</Link>
+        <Link href="/#services">Services</Link>
         <Link href="/business-directory/all">Directory</Link>
-        <Link href="/contact">
+        <Link href="/#contact">
           <Button className="rounded-full border-none bg-primary-500 text-sm text-light-900">
             Contact Us
           </Button>

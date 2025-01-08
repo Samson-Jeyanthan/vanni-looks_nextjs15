@@ -10,7 +10,11 @@ type Props = {
   setPreviousMedia: (media: IMediaProps) => void;
 };
 
-const IconInput = ({ fieldChange, previousMedia, setPreviousMedia }: Props) => {
+const IconMediaInput = ({
+  fieldChange,
+  previousMedia,
+  setPreviousMedia,
+}: Props) => {
   const photoRef = useRef<HTMLInputElement>(null);
   const { handleImageInput, error, media, setMedia } = useMedia();
   const [selectedItem, setSelectedItem] = useState({
@@ -54,4 +58,4 @@ const IconInput = ({ fieldChange, previousMedia, setPreviousMedia }: Props) => {
   );
 };
 
-export default IconInput;
+export default IconMediaInput;

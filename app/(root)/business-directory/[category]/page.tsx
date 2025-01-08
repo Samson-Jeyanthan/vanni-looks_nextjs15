@@ -4,6 +4,7 @@ import {
 } from "@/lib/actions/categories.action";
 import { CategoriesFilters, DistrictsFilters } from "@/components/shared";
 import { getAllDistrictsAction } from "@/lib/actions/location.action";
+import { DirectoryInput } from "@/components/inputs";
 
 type Props = {
   params?: { category: string };
@@ -40,10 +41,10 @@ const ResultsPage = async ({
         <h1 className="gradient-title w-3/4 text-center text-[68px] font-bold">
           Empowering Local Businesses with Strategic Marketing
         </h1>
-        <div>search inputs</div>
+        <DirectoryInput />
       </header>
 
-      <div className="flex w-full max-w-7xl gap-20 mt-12">
+      <div className="flex w-full max-w-7xl gap-20 mt-20">
         <div>
           <h1 className="text-xl font-bold border-b pb-2">Filters</h1>
           <CategoriesFilters

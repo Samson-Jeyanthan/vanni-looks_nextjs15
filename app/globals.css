@@ -46,4 +46,10 @@ body {
   .hero-input {
     @apply no-focus border-none bg-transparent placeholder:text-light-400 placeholder:font-medium placeholder:text-sm px-2 py-4 !important;
   }
+  .social-links-icon {
+    @apply fill-light-700 hover:fill-primary-500 cursor-pointer;
+  }
+  .directory-input {
+    @apply w-full no-focus border-none bg-light-800 placeholder:text-light-400 placeholder:font-medium placeholder:text-sm px-2 py-6 !important;
+  }
 }
