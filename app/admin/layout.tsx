@@ -11,7 +11,9 @@ export default function AdminLayout({
       <LeftSidebar />
 
       <section className="flex w-full flex-col p-12 items-center">
-        <div className="flex mx-auto w-full max-w-7xl">{children}</div>
+        <div className="flex items-center mx-auto w-full max-w-7xl">
+          {children}
+        </div>
       </section>
       <Toaster />
     </main>
