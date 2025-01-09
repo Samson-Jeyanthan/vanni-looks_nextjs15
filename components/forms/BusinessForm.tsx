@@ -4,8 +4,8 @@ import { BusinessSchema } from "@/lib/validations/admin.validation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Form, FormField } from "../ui/form";
-import { Dropdown, FormInput, TextArea } from "../inputs";
+import { Form, FormField, FormMessage } from "../ui/form";
+import { DateInput, Dropdown, FormInput, TextArea } from "../inputs";
 import { Button } from "../ui/button";
 import LogoInput from "../inputs/LogoInput";
 import { getSubCategoriesByMainCategoryId } from "@/lib/actions/categories.action";
@@ -44,6 +44,7 @@ const BusinessForm = ({ mainCategories, districts }: Props) => {
       businessName: "",
       businessLogo: [],
       description: "",
+      establishedData: "",
       address: "",
       district: "",
       city: "",
@@ -87,8 +88,10 @@ const BusinessForm = ({ mainCategories, districts }: Props) => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col gap-6 w-full max-w-5xl"
+        className="flex flex-col gap-5 w-full max-w-5xl"
       >
+        <h2 className="business-form-sub-heading mt-0">Basic Info</h2>
+
         <div className="flex items-center gap-20">
           <FormField
             control={form.control}
@@ -111,17 +114,32 @@ const BusinessForm = ({ mainCategories, districts }: Props) => {
 
         <TextArea
           form={form}
-          formDescription="The name of your business"
-          formLabel="Business Name"
+          formLabel="About Business"
           inputName="description"
-          maxLength={100}
+          maxLength={500}
         />
 
-        <FormInput
-          form={form}
-          inputName="address"
-          formLabel="Address"
-          formDescription=""
+        <div className="w-1/2">
+          <FormInput
+            form={form}
+            inputName="businessName"
+            formLabel="Registration Number"
+          />
+        </div>
+
+        <FormField
+          control={form.control}
+          name="establishedData"
+          render={({ field }) => (
+            <>
+              <DateInput
+                formLabel="Established Data"
+                fieldChange={field.onChange}
+                isoDate={form.getValues("establishedData")}
+              />
+              <FormMessage className="shad-auth_form_message -mt-4" />
+            </>
+          )}
         />
 
         <div className="flex gap-8">
@@ -144,6 +162,15 @@ const BusinessForm = ({ mainCategories, districts }: Props) => {
           />
         </div>
 
+        <h2 className="business-form-sub-heading">Location Info</h2>
+
+        <FormInput
+          form={form}
+          inputName="address"
+          formLabel="Address"
+          formDescription=""
+        />
+
         <div className="flex gap-8">
           <Dropdown
             form={form}
@@ -159,15 +186,29 @@ const BusinessForm = ({ mainCategories, districts }: Props) => {
             formLabel="Choose City"
             options={cityOptions}
             onValueChange={(id: string) => fetchCities(id)}
+            dependentFieldPlaceholder="Please select district"
+            dependentFieldValue={form.getValues("city") !== ""}
           />
         </div>
 
-        <FormInput
-          form={form}
-          inputName="businessName"
-          formLabel="Business Name"
-          formDescription="The name of your business"
-        />
+        <h2 className="business-form-sub-heading">
+          Contact & Social Links Info
+        </h2>
+
+        <div className="flex gap-8">
+          <FormInput
+            form={form}
+            inputName="businessName"
+            formLabel="Email Address"
+            formDescription="The name of your business"
+          />
+          <FormInput
+            form={form}
+            inputName="businessName"
+            formLabel="Portfolio / Website"
+            formDescription="The name of your business"
+          />
+        </div>
 
         <Button className="bg-primary-500 text-light-900 w-full">
           Add Business

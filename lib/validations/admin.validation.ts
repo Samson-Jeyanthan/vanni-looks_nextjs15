@@ -28,4 +28,5 @@ export const BusinessSchema = z.object({
   city: z.string().min(1),
   mainCategory: z.string().min(1),
   subCategory: z.string().min(1),
+  establishedData: z.string().min(1),
 });

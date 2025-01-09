@@ -14,7 +14,7 @@ interface Props {
   form: any;
   inputName: string;
   formLabel: string;
-  formDescription: string;
+  formDescription?: string;
   maxLength: number;
 }
 
@@ -37,13 +37,15 @@ const TextArea = ({
           <FormControl>
             <Textarea
               {...field}
-              className="no-focus text-dark-100_light-850 h-24 resize-none border border-solid border-light-750 bg-light-800 text-sm dark:border-dark-350 dark:bg-dark-250"
+              className="no-focus text-black h-40 resize-none border border-solid border-light-700 bg-light-800 text-sm"
               maxLength={maxLength}
             />
           </FormControl>
-          <FormDescription className="mt-2.5 text-xs text-light-500">
-            {formDescription}
-          </FormDescription>
+          {formDescription && (
+            <FormDescription className="mt-2 text-xs text-light-500">
+              {formDescription}
+            </FormDescription>
+          )}
           <FormMessage className="text-xs text-red-500" />
         </FormItem>
       )}

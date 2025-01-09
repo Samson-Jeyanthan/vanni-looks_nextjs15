@@ -54,12 +54,12 @@ const Dropdown = ({
       name={inputName}
       render={({ field }) => (
         <FormItem className="w-full pb-2">
-          <FormLabel className="text-dark-100_light-850">{formLabel}</FormLabel>
+          <FormLabel className="text-black">{formLabel}</FormLabel>
           <FormControl className="no-focus">
             <Select
               onValueChange={(_id: string) => handleSelectChange(_id, field)}
             >
-              <SelectTrigger className="no-focus text-dark-100_light-850 border border-solid border-light-750 bg-light-800 text-sm dark:border-dark-350 dark:bg-dark-250 capitalize">
+              <SelectTrigger className="no-focus text-black border border-solid border-light-700 bg-light-800 text-sm dark:border-dark-350 dark:bg-dark-250 capitalize">
                 {value ? (
                   <p className="first-letter:capitalize">{value}</p>
                 ) : (
@@ -85,9 +85,11 @@ const Dropdown = ({
               </SelectContent>
             </Select>
           </FormControl>
-          <FormDescription className="mt-2.5 text-xs text-light-500">
-            {formDescription}
-          </FormDescription>
+          {formDescription && (
+            <FormDescription className="mt-2 text-xs text-light-500">
+              {formDescription}
+            </FormDescription>
+          )}
           <FormMessage className="text-xs text-red-500" />
         </FormItem>
       )}
