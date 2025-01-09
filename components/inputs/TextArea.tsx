@@ -44,7 +44,7 @@ const TextArea = ({
           <FormDescription className="mt-2.5 text-xs text-light-500">
             {formDescription}
           </FormDescription>
-          <FormMessage className="text-xs text-custom-red" />
+          <FormMessage className="text-xs text-red-500" />
         </FormItem>
       )}
     />

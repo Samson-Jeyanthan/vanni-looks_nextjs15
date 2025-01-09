@@ -16,6 +16,7 @@ export type TDistrictParams = {
   path: string;
 };
 
+// creating city
 export type TCityParams = {
   _id?: string;
   districtId: string;
@@ -26,4 +27,10 @@ export type TCityParams = {
 export type TDeleteParams = {
   _id: string;
   path: string;
+};
+
+// get citys by id
+export type TCitysByDistrictIdParams = {
+  districtId: string;
+  isClient: boolean;
 };

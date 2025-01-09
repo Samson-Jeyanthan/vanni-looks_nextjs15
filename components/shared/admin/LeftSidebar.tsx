@@ -10,7 +10,7 @@ import { IoIosArrowForward } from "react-icons/io";
 const LeftSidebar = () => {
   const pathname = usePathname();
   return (
-    <aside className="xl:flex w-[16rem] min-w-[16rem] sticky top-0 left-0 min-h-screen bg-light-900 p-4 hidden flex-col justify-between">
+    <aside className="xl:flex w-[16rem] min-w-[16rem] sticky top-0 left-0 max-h-screen min-h-screen bg-light-900 p-4 hidden flex-col justify-between">
       <div className="flex flex-col gap-10 pt-6">
         <header className="flex-start w-max gap-2 text-2xl font-bold text-primary-500">
           <DiAtom className="text-4xl" />

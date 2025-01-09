@@ -32,7 +32,7 @@ const ResultsPage = async ({
 
   // Fetch subcategories using the parsed _id
   const subCategoryData = mainCategoryId
-    ? await getSubCategoriesByMainCategoryId(mainCategoryId)
+    ? await getSubCategoriesByMainCategoryId(mainCategoryId, false)
     : null;
 
   return (

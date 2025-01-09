@@ -101,7 +101,10 @@ export async function getAllSubCategoriesAction() {
   }
 }
 
-export async function getSubCategoriesByMainCategoryId(mainCategoryId: string) {
+export async function getSubCategoriesByMainCategoryId(
+  mainCategoryId: string,
+  isClient: boolean
+) {
   try {
     connectToDatabase();
 
@@ -111,7 +114,7 @@ export async function getSubCategoriesByMainCategoryId(mainCategoryId: string) {
 
     return {
       status: "200",
-      data: subCategories,
+      data: isClient ? JSON.stringify(subCategories) : subCategories,
     };
   } catch (error) {
     console.log(error);

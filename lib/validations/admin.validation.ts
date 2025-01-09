@@ -21,8 +21,11 @@ export const CitiesSchema = z.object({
 
 export const BusinessSchema = z.object({
   businessName: z.string().min(3).max(130),
-  businessDescription: z.string().min(3).max(130),
-  businessAddress: z.string().min(3).max(130),
-  businessCity: z.string().min(3).max(130),
-  businessDistrict: z.string().min(3).max(130),
+  businessLogo: z.custom<File[]>().optional(),
+  description: z.string().min(3).max(130),
+  address: z.string().min(3).max(130),
+  district: z.string().min(3),
+  city: z.string().min(1),
+  mainCategory: z.string().min(1),
+  subCategory: z.string().min(1),
 });
