@@ -17,11 +17,6 @@ type Props = {
   districts: string;
 };
 
-type Arr = {
-  _id: string;
-  name: string;
-};
-
 const BusinessForm = ({ mainCategories, districts }: Props) => {
   const [subCategoryOptions, setSubCategoryOptions] = useState([]);
   const [cityOptions, setCityOptions] = useState([]);

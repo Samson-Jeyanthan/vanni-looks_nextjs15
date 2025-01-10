@@ -1,7 +1,7 @@
 import { LeftSidebar } from "@/components/shared/admin";
 import { Toaster } from "@/components/ui/sonner";
 
-export default function AdminLayout({
+export default async function AdminLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -9,7 +9,6 @@ export default function AdminLayout({
   return (
     <main className="flex bg-light-850 min-h-screen w-full">
       <LeftSidebar />
-
       <section className="flex w-full flex-col p-12 items-center">
         <div className="flex items-center mx-auto w-full max-w-7xl">
           {children}
