@@ -34,3 +34,8 @@ export type TCitysByDistrictIdParams = {
   districtId: string;
   isClient: boolean;
 };
+
+export type TLoginParams = {
+  email: string;
+  password: string;
+};
