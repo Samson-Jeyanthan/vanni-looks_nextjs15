@@ -45,6 +45,9 @@ const BusinessForm = ({ mainCategories, districts }: Props) => {
       city: "",
       mainCategory: "",
       subCategory: "",
+      email: "",
+      website: "",
+      registrationNumber: "",
     },
   });
 
@@ -114,7 +117,7 @@ const BusinessForm = ({ mainCategories, districts }: Props) => {
           maxLength={500}
         />
 
-        <div className="w-1/2">
+        <div className="w-1/2 pr-5">
           <FormInput
             form={form}
             inputName="businessName"
@@ -204,6 +207,10 @@ const BusinessForm = ({ mainCategories, districts }: Props) => {
             formDescription="The name of your business"
           />
         </div>
+
+        <p>Media</p>
+        <p>Social links</p>
+        <p>Phone</p>
 
         <Button className="bg-primary-500 text-light-900 w-full">
           Add Business

@@ -27,3 +27,16 @@ export interface IMediaProps {
   mediaURL: string;
   thumbnailURL: string;
 }
+
+export type TSocialLinksProps = {
+  name:
+    | "FACEBOOK"
+    | "TWITTER"
+    | "INSTAGRAM"
+    | "LINKEDIN"
+    | "GITHUB"
+    | "YOUTUBE"
+    | "PORTFOLIO"
+    | "OTHER";
+  url: string;
+};
