@@ -40,3 +40,8 @@ export type TSocialLinksProps = {
     | "OTHER";
   url: string;
 };
+
+export type TPhoneProps = {
+  number: string;
+  type: "LANDLINE" | "MOBILE" | "FAX" | "WHATSAPP";
+};

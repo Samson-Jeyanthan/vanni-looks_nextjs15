@@ -6,6 +6,7 @@ import { TBusinessParams } from "./shared.types";
 import Business from "@/database/business.model";
 
 export async function createBusinessAction(params: TBusinessParams) {
+  console.log(params);
   try {
     connectToDatabase();
 

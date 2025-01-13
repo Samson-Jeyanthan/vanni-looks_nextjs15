@@ -1,4 +1,8 @@
-import { IMediaProps, TSocialLinksProps } from "@/types/utils.types";
+import {
+  IMediaProps,
+  TPhoneProps,
+  TSocialLinksProps,
+} from "@/types/utils.types";
 
 export type TMainCategoryParams = {
   title: string;
@@ -45,15 +49,15 @@ export type TLoginParams = {
 export type TBusinessParams = {
   name: string;
   description: string;
-  businessLogo: string;
+  businessLogo?: string;
   address: string;
-  registrationType: "business" | "company" | "individual";
-  registrationNumber: string;
-  email: string;
-  phone: string;
-  website: string;
-  socialLinks: TSocialLinksProps[];
-  media: IMediaProps[];
+  registrationType?: "business" | "company" | "individual";
+  registrationNumber?: string;
+  email?: string;
+  phone?: TPhoneProps[];
+  website?: string;
+  socialLinks?: TSocialLinksProps[];
+  media?: IMediaProps[];
   cityId: string;
   districtId: string;
   mainCategoryId: string;

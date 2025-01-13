@@ -54,11 +54,13 @@ const BusinessSchema = new Schema({
   },
   registrationNumber: { type: String, default: "" },
   email: { type: String, default: "" },
-  phone: {
-    type: String,
-    enum: ["LANDLINE", "MOBILE", "FAX", "WHATSAPP"],
-    default: "MOBILE",
-  },
+  phone: [
+    {
+      type: String,
+      enum: ["LANDLINE", "MOBILE", "FAX", "WHATSAPP"],
+      default: "MOBILE",
+    },
+  ],
   website: { type: String },
   socialLinks: [
     {
