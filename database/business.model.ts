@@ -4,6 +4,16 @@ export interface IBusiness extends Document {
   name: string;
   description: string;
   businessLogo: string;
+  address: string;
+  registrationNumber: string;
+  registrationType: "business" | "company" | "individual";
+  email: string;
+  phone: [
+    {
+      number: string;
+      type: "LANDLINE" | "MOBILE" | "FAX" | "WHATSAPP";
+    },
+  ];
   website: string;
   socialLinks?: {
     name:
@@ -24,19 +34,10 @@ export interface IBusiness extends Document {
       thumbnailURL: { type: String; default: "" };
     },
   ];
-  email: string;
-  phone: [
-    {
-      number: string;
-      type: "LANDLINE" | "MOBILE" | "FAX";
-    },
-  ];
-  address: string;
   cityId: { type: Schema.Types.ObjectId; ref: "City" };
   districtId: { type: Schema.Types.ObjectId; ref: "District" };
   mainCategoryId: { type: Schema.Types.ObjectId; ref: "MainCategory" };
   subCategoryId: { type: Schema.Types.ObjectId; ref: "SubCategory" };
-  registrationNumber: string;
   establishedAt: Date;
   createdAt: Date;
 }
@@ -45,6 +46,21 @@ const BusinessSchema = new Schema({
   name: { type: String, required: true },
   description: { type: String, required: true },
   businessLogo: { type: String },
+  address: { type: String, default: "" },
+  registrationType: {
+    type: String,
+    enum: ["business", "company", "individual"],
+    default: "business",
+  },
+  registrationNumber: { type: String, default: "" },
+  email: { type: String, default: "" },
+  phone: [
+    {
+      type: String,
+      enum: ["LANDLINE", "MOBILE", "FAX", "WHATSAPP"],
+      default: "MOBILE",
+    },
+  ],
   website: { type: String },
   socialLinks: [
     {
@@ -71,14 +87,10 @@ const BusinessSchema = new Schema({
       thumbnailURL: { type: String, default: "" },
     },
   ],
-  email: { type: String, default: "" },
-  phone: { type: String, default: "" },
-  address: { type: String, default: "" },
   cityId: { type: Schema.Types.ObjectId, ref: "City" },
   districtId: { type: Schema.Types.ObjectId, ref: "District" },
   mainCategoryId: { type: Schema.Types.ObjectId, ref: "MainCategory" },
   subCategoryId: { type: Schema.Types.ObjectId, ref: "SubCategory" },
-  registrationNumber: { type: String, default: "" },
   establishedAt: { type: Date },
   createdAt: { type: Date, default: Date.now },
 });

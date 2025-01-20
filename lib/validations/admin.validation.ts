@@ -33,5 +33,8 @@ export const BusinessSchema = z.object({
   city: z.string().min(1),
   mainCategory: z.string().min(1),
   subCategory: z.string().min(1),
-  establishedData: z.string().min(1),
+  establishedDate: z.string().min(1),
+  website: z.string().optional(),
+  email: z.string().email().optional(),
+  registrationNumber: z.string().optional(),
 });

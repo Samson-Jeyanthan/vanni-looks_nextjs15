@@ -11,6 +11,9 @@ import LogoInput from "../inputs/LogoInput";
 import { getSubCategoriesByMainCategoryId } from "@/lib/actions/categories.action";
 import { getCitiesByDistrictIdAction } from "@/lib/actions/location.action";
 import { useState } from "react";
+import { createBusinessAction } from "@/lib/actions/business.action";
+import { usePathname } from "next/navigation";
+import { toast } from "sonner";
 
 type Props = {
   mainCategories: string;
@@ -18,6 +21,7 @@ type Props = {
 };
 
 const BusinessForm = ({ mainCategories, districts }: Props) => {
+  const pathname = usePathname();
   const [subCategoryOptions, setSubCategoryOptions] = useState([]);
   const [cityOptions, setCityOptions] = useState([]);
 
@@ -39,12 +43,15 @@ const BusinessForm = ({ mainCategories, districts }: Props) => {
       businessName: "",
       businessLogo: [],
       description: "",
-      establishedData: "",
+      establishedDate: "",
       address: "",
       district: "",
       city: "",
       mainCategory: "",
       subCategory: "",
+      email: "",
+      website: "",
+      registrationNumber: "",
     },
   });
 
@@ -75,8 +82,33 @@ const BusinessForm = ({ mainCategories, districts }: Props) => {
     }
   }
 
-  function onSubmit(values: z.infer<typeof BusinessSchema>) {
-    console.log(values, subCategoryOptions);
+  async function onSubmit(values: z.infer<typeof BusinessSchema>) {
+    console.log(values);
+    const res = await createBusinessAction({
+      name: values.businessName,
+      description: values.description,
+      businessLogo: "",
+      registrationType: "business",
+      registrationNumber: values.registrationNumber,
+      establishedAt: values.establishedDate,
+      address: values.address,
+      districtId: values.district,
+      cityId: values.city,
+      mainCategoryId: values.mainCategory,
+      subCategoryId: values.subCategory,
+      email: values.email,
+      website: values.website,
+      phone: [],
+      media: [],
+      socialLinks: [],
+      path: pathname,
+    });
+
+    if (res.status === "200") {
+      toast.success(res.message, { duration: 5000 });
+    } else {
+      toast.error(res.message, { duration: 5000 });
+    }
   }
 
   return (
@@ -114,25 +146,25 @@ const BusinessForm = ({ mainCategories, districts }: Props) => {
           maxLength={500}
         />
 
-        <div className="w-1/2">
+        <div className="w-1/2 pr-5">
           <FormInput
             form={form}
-            inputName="businessName"
+            inputName="registrationNumber"
             formLabel="Registration Number"
           />
         </div>
 
         <FormField
           control={form.control}
-          name="establishedData"
+          name="establishedDate"
           render={({ field }) => (
             <>
               <DateInput
                 formLabel="Established Data"
                 fieldChange={field.onChange}
-                isoDate={form.getValues("establishedData")}
+                isoDate={form.getValues("establishedDate")}
               />
-              <FormMessage className="shad-auth_form_message -mt-4" />
+              <FormMessage className="shad-auth_form_message -mt-2" />
             </>
           )}
         />
@@ -151,7 +183,6 @@ const BusinessForm = ({ mainCategories, districts }: Props) => {
             inputName="subCategory"
             formLabel="Choose Sub Category"
             options={subCategoryOptions}
-            onValueChange={(id: string) => fetchSubCategories(id)}
             dependentFieldPlaceholder="Please select main category"
             dependentFieldValue={form.getValues("mainCategory") !== ""}
           />
@@ -180,9 +211,8 @@ const BusinessForm = ({ mainCategories, districts }: Props) => {
             inputName="city"
             formLabel="Choose City"
             options={cityOptions}
-            onValueChange={(id: string) => fetchCities(id)}
             dependentFieldPlaceholder="Please select district"
-            dependentFieldValue={form.getValues("city") !== ""}
+            dependentFieldValue={form.getValues("district") !== ""}
           />
         </div>
 
@@ -193,17 +223,21 @@ const BusinessForm = ({ mainCategories, districts }: Props) => {
         <div className="flex gap-8">
           <FormInput
             form={form}
-            inputName="businessName"
+            inputName="email"
             formLabel="Email Address"
             formDescription="The name of your business"
           />
           <FormInput
             form={form}
-            inputName="businessName"
+            inputName="website"
             formLabel="Portfolio / Website"
             formDescription="The name of your business"
           />
         </div>
+
+        <p>Media</p>
+        <p>Social links</p>
+        <p>Phone</p>
 
         <Button className="bg-primary-500 text-light-900 w-full">
           Add Business

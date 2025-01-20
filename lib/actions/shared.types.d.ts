@@ -1,3 +1,9 @@
+import {
+  IMediaProps,
+  TPhoneProps,
+  TSocialLinksProps,
+} from "@/types/utils.types";
+
 export type TMainCategoryParams = {
   title: string;
   icon?: IMediaProps;
@@ -29,7 +35,7 @@ export type TDeleteParams = {
   path: string;
 };
 
-// get citys by id
+// get citys by district id
 export type TCitysByDistrictIdParams = {
   districtId: string;
   isClient: boolean;
@@ -38,4 +44,24 @@ export type TCitysByDistrictIdParams = {
 export type TLoginParams = {
   email: string;
   password: string;
+};
+
+export type TBusinessParams = {
+  name: string;
+  description: string;
+  businessLogo?: string;
+  address: string;
+  registrationType?: "business" | "company" | "individual";
+  registrationNumber?: string;
+  email?: string;
+  phone?: TPhoneProps[];
+  website?: string;
+  socialLinks?: TSocialLinksProps[];
+  media?: IMediaProps[];
+  cityId: string;
+  districtId: string;
+  mainCategoryId: string;
+  subCategoryId: string;
+  establishedAt: string;
+  path: string;
 };

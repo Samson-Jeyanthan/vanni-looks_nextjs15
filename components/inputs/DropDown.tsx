@@ -67,7 +67,7 @@ const Dropdown = ({
                 )}
               </SelectTrigger>
               <SelectContent className="no-focus text-light-100 border border-solid border-light-700 bg-light-800 text-sm">
-                {dependentFieldPlaceholder && !dependentFieldValue && (
+                {!dependentFieldValue && dependentFieldPlaceholder && (
                   <div className="text-light-400 flex items-center p-1 text-sm">
                     -- {dependentFieldPlaceholder} --
                   </div>
