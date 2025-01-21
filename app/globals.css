@@ -55,4 +55,10 @@ body {
   .business-form-sub-heading {
     @apply text-xl font-semibold py-3 border-b border-light-600 w-full text-left mt-8;
   }
+  .business-card-contact {
+    @apply flex items-center gap-2 text-sm hover:text-primary-500/70 cursor-pointer fill-light-600 hover:fill-primary-500/50;
+  }
+  .business-card-icon {
+    @apply size-7 rounded-full border border-light-700 flex-center;
+  }
 }
