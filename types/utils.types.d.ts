@@ -27,3 +27,21 @@ export interface IMediaProps {
   mediaURL: string;
   thumbnailURL: string;
 }
+
+export type TSocialLinksProps = {
+  name:
+    | "FACEBOOK"
+    | "TWITTER"
+    | "INSTAGRAM"
+    | "LINKEDIN"
+    | "GITHUB"
+    | "YOUTUBE"
+    | "PORTFOLIO"
+    | "OTHER";
+  url: string;
+};
+
+export type TPhoneProps = {
+  number: string;
+  type: "LANDLINE" | "MOBILE" | "FAX" | "WHATSAPP";
+};

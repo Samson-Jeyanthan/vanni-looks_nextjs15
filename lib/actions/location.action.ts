@@ -3,8 +3,13 @@
 import District from "@/database/district.model";
 import { connectToDatabase } from "../mongoose";
 import { revalidatePath } from "next/cache";
-import { TCityParams, TDeleteParams, TDistrictParams } from "./shared.types";
-import City from "@/database/city.model";
+import {
+  TCityParams,
+  TCitysByDistrictIdParams,
+  TDeleteParams,
+  TDistrictParams,
+} from "./shared.types";
+import City, { ICity } from "@/database/city.model";
 
 export async function createDistrictAction(params: TDistrictParams) {
   try {
@@ -159,6 +164,27 @@ export async function getAllCitiesAction() {
     return {
       status: "500",
       message: "Error fetching cities",
+    };
+  }
+}
+
+export async function getCitiesByDistrictIdAction(
+  params: TCitysByDistrictIdParams
+) {
+  try {
+    connectToDatabase();
+    const { districtId, isClient } = params;
+
+    const cities = await City.find({ districtId }).sort({ createdAt: -1 });
+
+    return {
+      status: "200",
+      data: isClient ? JSON.stringify(cities) : cities,
+    };
+  } catch (error) {
+    return {
+      status: "500",
+      message: "Error fetching",
     };
   }
 }

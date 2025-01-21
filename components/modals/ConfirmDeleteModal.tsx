@@ -19,7 +19,7 @@ import { MdDelete } from "react-icons/md";
 import { usePathname } from "next/navigation";
 
 type Props = {
-  type: "district" | "city" | "mainCategory" | "subCategory";
+  type: "district" | "city" | "mainCategory" | "subCategory" | "business";
   itemId: string;
 };
 

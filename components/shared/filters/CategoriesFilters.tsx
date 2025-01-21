@@ -56,7 +56,7 @@ const CategoriesFilters = ({
             <Link
               href={encodedURL}
               key={index}
-              className={`${isActive ? "bg-light-750" : ""} flex items-center gap-3 rounded-md hover:bg-light-750 p-2`}
+              className={`${isActive ? "bg-light-700" : ""} flex items-center gap-3 rounded-md hover:bg-light-700 p-2`}
             >
               <p className="capitalize text-sm justify-between w-full flex items-center">
                 {category.title} {isActive && <IoIosArrowDown />}
@@ -67,7 +67,7 @@ const CategoriesFilters = ({
                 parsedSubCategories.map((category, index) => (
                   <div
                     key={index}
-                    className="w-[85%] flex items-center gap-3 rounded-md text-sm hover:bg-light-750 p-1.5"
+                    className="w-[85%] flex items-center gap-3 rounded-md text-sm hover:bg-light-700 p-1.5"
                   >
                     {category.title}
                   </div>

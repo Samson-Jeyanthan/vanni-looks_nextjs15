@@ -24,6 +24,9 @@ type TDropdownProps = {
   options: { _id: string; name: string }[];
   formDescription?: string;
   prevValue?: string;
+  onValueChange?: (_id: string) => {};
+  dependentFieldPlaceholder?: string;
+  dependentFieldValue?: boolean;
 };
 
 const Dropdown = ({
@@ -33,8 +36,17 @@ const Dropdown = ({
   options,
   formDescription,
   prevValue,
+  onValueChange,
+  dependentFieldPlaceholder,
+  dependentFieldValue,
 }: TDropdownProps) => {
   const [value, setValue] = useState(prevValue || "");
+
+  const handleSelectChange = (_id: string, field: any) => {
+    field.onChange(_id);
+    onValueChange && onValueChange(_id);
+    console.log(_id, dependentFieldValue);
+  };
 
   return (
     <FormField
@@ -42,17 +54,24 @@ const Dropdown = ({
       name={inputName}
       render={({ field }) => (
         <FormItem className="w-full pb-2">
-          <FormLabel className="text-dark-100_light-850">{formLabel}</FormLabel>
+          <FormLabel className="text-black">{formLabel}</FormLabel>
           <FormControl className="no-focus">
-            <Select onValueChange={(_id: string) => field.onChange(_id)}>
-              <SelectTrigger className="no-focus text-dark-100_light-850 border border-solid border-light-750 bg-light-800 text-sm dark:border-dark-350 dark:bg-dark-250">
+            <Select
+              onValueChange={(_id: string) => handleSelectChange(_id, field)}
+            >
+              <SelectTrigger className="no-focus text-black border border-solid border-light-700 bg-light-800 text-sm dark:border-dark-350 dark:bg-dark-250 capitalize">
                 {value ? (
                   <p className="first-letter:capitalize">{value}</p>
                 ) : (
-                  <SelectValue />
+                  <SelectValue className="capitalize" />
                 )}
               </SelectTrigger>
               <SelectContent className="no-focus text-light-100 border border-solid border-light-700 bg-light-800 text-sm">
+                {!dependentFieldValue && dependentFieldPlaceholder && (
+                  <div className="text-light-400 flex items-center p-1 text-sm">
+                    -- {dependentFieldPlaceholder} --
+                  </div>
+                )}
                 {options?.map((option, index) => (
                   <SelectItem
                     key={index}
@@ -66,10 +85,12 @@ const Dropdown = ({
               </SelectContent>
             </Select>
           </FormControl>
-          <FormDescription className="mt-2.5 text-xs text-light-500">
-            {formDescription}
-          </FormDescription>
-          <FormMessage className="text-xs text-custom-red" />
+          {formDescription && (
+            <FormDescription className="mt-2 text-xs text-light-500">
+              {formDescription}
+            </FormDescription>
+          )}
+          <FormMessage className="text-xs text-red-500" />
         </FormItem>
       )}
     />
