@@ -24,9 +24,18 @@ export const CitiesSchema = z.object({
   districtId: z.string().min(1),
 });
 
+export const MediaFileSchema = z.object({
+  data: z.custom<File[]>(),
+  preview: z.string().url(),
+  fileType: z.string(),
+  fileName: z.string(),
+  mediaType: z.string(),
+});
+
 export const BusinessSchema = z.object({
   businessName: z.string().min(3).max(130),
   businessLogo: z.custom<File[]>().optional(),
+  coverPhoto: z.custom<File[]>().optional(),
   description: z.string().min(3).max(130),
   address: z.string().min(3).max(130),
   district: z.string().min(3),
@@ -37,4 +46,9 @@ export const BusinessSchema = z.object({
   website: z.string().optional(),
   email: z.string().email().optional(),
   registrationNumber: z.string().optional(),
+  mediaFiles: z.array(MediaFileSchema).optional(),
+  phone: z.array(z.object({ number: z.string(), type: z.string() })).optional(),
+  socialLinks: z
+    .array(z.object({ name: z.string(), url: z.string() }))
+    .optional(),
 });

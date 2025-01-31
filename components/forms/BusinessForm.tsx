@@ -5,7 +5,15 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Form, FormField, FormMessage } from "../ui/form";
-import { DateInput, Dropdown, FormInput, TextArea } from "../inputs";
+import {
+  DateInput,
+  Dropdown,
+  FormInput,
+  ArrayInput,
+  TextArea,
+  MediaInput,
+  CoverPhotoInput,
+} from "../inputs";
 import { Button } from "../ui/button";
 import LogoInput from "../inputs/LogoInput";
 import { getSubCategoriesByMainCategoryId } from "@/lib/actions/categories.action";
@@ -14,16 +22,29 @@ import { useState } from "react";
 import { createBusinessAction } from "@/lib/actions/business.action";
 import { usePathname } from "next/navigation";
 import { toast } from "sonner";
+import { PHONE_OPTIONS, SOCIAL_MEDIA_OPTIONS } from "@/constants";
+import { IMediaProps } from "@/types/utils.types";
 
 type Props = {
   mainCategories: string;
   districts: string;
+  businessDetails?: string;
 };
 
-const BusinessForm = ({ mainCategories, districts }: Props) => {
+const BusinessForm = ({
+  mainCategories,
+  districts,
+  businessDetails,
+}: Props) => {
   const pathname = usePathname();
+  const parsedBusinessDetails =
+    businessDetails && JSON.parse(businessDetails || "");
+
   const [subCategoryOptions, setSubCategoryOptions] = useState([]);
   const [cityOptions, setCityOptions] = useState([]);
+  const [previousMedia, setPreviousMedia] = useState<IMediaProps[]>(
+    parsedBusinessDetails?.media || []
+  );
 
   const MAIN_CATEGORY_OPTIONS = JSON.parse(mainCategories)?.map(
     (category: any) => ({
@@ -42,6 +63,7 @@ const BusinessForm = ({ mainCategories, districts }: Props) => {
     defaultValues: {
       businessName: "",
       businessLogo: [],
+      coverPhoto: [],
       description: "",
       establishedDate: "",
       address: "",
@@ -52,6 +74,9 @@ const BusinessForm = ({ mainCategories, districts }: Props) => {
       email: "",
       website: "",
       registrationNumber: "",
+      mediaFiles: [],
+      phone: [],
+      socialLinks: [],
     },
   });
 
@@ -118,6 +143,14 @@ const BusinessForm = ({ mainCategories, districts }: Props) => {
         className="flex flex-col gap-5 w-full max-w-5xl"
       >
         <h2 className="business-form-sub-heading mt-0">Basic Info</h2>
+
+        <FormField
+          control={form.control}
+          name="businessLogo"
+          render={({ field }) => (
+            <CoverPhotoInput fieldChange={field.onChange} />
+          )}
+        />
 
         <div className="flex items-center gap-20">
           <FormField
@@ -235,9 +268,25 @@ const BusinessForm = ({ mainCategories, districts }: Props) => {
           />
         </div>
 
-        <p>Media</p>
-        <p>Social links</p>
-        <p>Phone</p>
+        <ArrayInput formLabel="Phone" options={PHONE_OPTIONS} />
+        <ArrayInput formLabel="Social Links" options={SOCIAL_MEDIA_OPTIONS} />
+
+        <h2 className="business-form-sub-heading">
+          Media Files
+          <span className="text-sm text-light-500 ml-2">(Videos & Images)</span>
+        </h2>
+
+        <FormField
+          control={form.control}
+          name="mediaFiles"
+          render={({ field }) => (
+            <MediaInput
+              fieldChange={field.onChange}
+              previousMedia={previousMedia}
+              setPreviousMedia={setPreviousMedia}
+            />
+          )}
+        />
 
         <Button className="bg-primary-500 text-light-900 w-full">
           Add Business
