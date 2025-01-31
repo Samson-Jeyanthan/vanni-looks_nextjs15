@@ -6,3 +6,6 @@ export { default as LocalSearchbar } from "./LocalSearchbar";
 export { default as DirectoryInput } from "./DirectoryInput";
 export { default as TextArea } from "./TextArea";
 export { default as DateInput } from "./DateInput";
+export { default as ArrayInput } from "./ArrayInput";
+export { default as MediaInput } from "./MediaInput";
+export { default as CoverPhotoInput } from "./CoverPhotoInput";

@@ -23,7 +23,7 @@ export interface IParamsProps {
 }
 
 export interface IMediaProps {
-  mediaType: "image" | "video" | "audio" | "pdf" | "svg";
+  mediaType: "image" | "video" | "audio" | "pdf" | "svg" | "youtube-url";
   mediaURL: string;
   thumbnailURL: string;
 }

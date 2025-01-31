@@ -49,7 +49,7 @@ const BusinessSchema = new Schema({
   address: { type: String, default: "" },
   registrationType: {
     type: String,
-    enum: ["business", "company", "individual"],
+    enum: ["business", "company", "individual", "other"],
     default: "business",
   },
   registrationNumber: { type: String, default: "" },
@@ -73,7 +73,6 @@ const BusinessSchema = new Schema({
           "LINKEDIN",
           "GITHUB",
           "YOUTUBE",
-          "PORTFOLIO",
           "OTHER",
         ],
       },
