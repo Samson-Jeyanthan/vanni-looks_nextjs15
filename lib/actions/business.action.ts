@@ -5,7 +5,9 @@ import { connectToDatabase } from "../mongoose";
 import { TBusinessParams } from "./shared.types";
 import Business from "@/database/business.model";
 import MainCategory from "@/database/mainCategory.model";
-import SubCategory from "@/database/SubCategory.model";
+import SubCategory from "@/database/subCategory.model";
+import City from "@/database/city.model";
+import District from "@/database/district.model";
 
 export async function createBusinessAction(params: TBusinessParams) {
   console.log(params);
@@ -95,6 +97,53 @@ export async function getAllBusinessesAction() {
     return {
       status: "500",
       message: "Error fetching businesses",
+    };
+  }
+}
+
+export async function getBusinessByIdAction(params: { businessId: string }) {
+  try {
+    connectToDatabase();
+
+    const { businessId } = params;
+
+    const business = await Business.findById(businessId)
+      .populate({
+        path: "cityId",
+        model: City,
+      })
+      .populate({
+        path: "districtId",
+        model: District,
+      })
+      .populate({
+        path: "mainCategoryId",
+        model: MainCategory,
+        select: "_id title icon",
+      })
+      .populate({
+        path: "subCategoryId",
+        model: SubCategory,
+        select: "_id title",
+      });
+
+    if (!business) {
+      return {
+        status: "404",
+        message: "Business not found",
+      };
+    }
+
+    return {
+      status: "200",
+      message: "Business fetched successfully",
+      data: business,
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      status: "500",
+      message: "Error fetching business",
     };
   }
 }
