@@ -4,10 +4,10 @@ import { revalidatePath } from "next/cache";
 import { connectToDatabase } from "../mongoose";
 import { TBusinessParams } from "./shared.types";
 import Business from "@/database/business.model";
-import City from "@/database/city.model";
-import District from "@/database/district.model";
 import MainCategory from "@/database/mainCategory.model";
 import SubCategory from "@/database/subCategory.model";
+import City from "@/database/city.model";
+import District from "@/database/district.model";
 
 export async function createBusinessAction(params: TBusinessParams) {
   console.log(params);
@@ -77,16 +77,13 @@ export async function getAllBusinessesAction() {
         createdAt: -1,
       })
       .populate({
-        path: "cityId",
-        model: City,
-      })
-      .populate({
-        path: "districtId",
-        model: District,
-      })
-      .populate({
         path: "mainCategoryId",
         model: MainCategory,
+        select: "_id title",
+      })
+      .populate({
+        path: "subCategoryId",
+        model: SubCategory,
         select: "_id title",
       });
 
