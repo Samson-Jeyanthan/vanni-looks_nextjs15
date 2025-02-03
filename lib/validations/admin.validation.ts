@@ -36,13 +36,13 @@ export const BusinessSchema = z.object({
   businessName: z.string().min(3).max(130),
   businessLogo: z.custom<File[]>().optional(),
   coverPhoto: z.custom<File[]>().optional(),
-  description: z.string().min(3).max(130),
+  description: z.string().min(3).max(1000),
   address: z.string().min(3).max(130),
   district: z.string().min(3),
   city: z.string().min(1),
   mainCategory: z.string().min(1),
   subCategory: z.string().min(1),
-  establishedDate: z.string().min(1),
+  establishedDate: z.string().min(1, { message: "Date is required" }),
   website: z.string().optional(),
   email: z.string().email().optional(),
   registrationNumber: z.string().optional(),
@@ -51,4 +51,10 @@ export const BusinessSchema = z.object({
   socialLinks: z
     .array(z.object({ name: z.string(), url: z.string() }))
     .optional(),
+});
+
+export const ContactSchema = z.object({
+  name: z.string().min(3).max(130),
+  email: z.string().email(),
+  description: z.string().min(10).max(1500),
 });

@@ -6,12 +6,12 @@ const SaleIncreaseCard = () => {
     <article className="z-10 -mb-10 flex w-full max-w-7xl justify-between gap-16 rounded-3xl bg-light-900 p-12 shadow-lg">
       <Image
         src="/images/sales-increase.png"
-        width={3000}
-        height={3000}
+        width={1024}
+        height={1024}
         alt="location"
         className="size-48 rounded-2xl object-contain"
       />
-      <div className="flex w-full flex-col gap-6">
+      <div className="flex w-full flex-col gap-6 text-light-100">
         <h2 className="text-4xl font-bold">
           Drive Sales and Build Loyalty with Tailored Marketing Solutions
         </h2>

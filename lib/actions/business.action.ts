@@ -8,6 +8,7 @@ import MainCategory from "@/database/mainCategory.model";
 import SubCategory from "@/database/subCategory.model";
 import City from "@/database/city.model";
 import District from "@/database/district.model";
+import { FilterQuery } from "mongoose";
 
 export async function createBusinessAction(params: TBusinessParams) {
   console.log(params);
@@ -68,11 +69,22 @@ export async function createBusinessAction(params: TBusinessParams) {
   }
 }
 
-export async function getAllBusinessesAction() {
+export async function getAllBusinessesAction(params: any) {
   try {
     connectToDatabase();
 
-    const businesses = await Business.find()
+    const { searchQuery, filter } = params;
+
+    const query: FilterQuery<typeof Business> = {};
+
+    if (searchQuery) {
+      query.$or = [
+        { name: { $regex: new RegExp(searchQuery, "i") } },
+        { description: { $regex: new RegExp(searchQuery, "i") } },
+      ];
+    }
+
+    const businesses = await Business.find(query)
       .sort({
         createdAt: -1,
       })
@@ -85,6 +97,14 @@ export async function getAllBusinessesAction() {
         path: "subCategoryId",
         model: SubCategory,
         select: "_id title",
+      })
+      .populate({
+        path: "cityId",
+        model: City,
+      })
+      .populate({
+        path: "districtId",
+        model: District,
       });
 
     return {
@@ -97,6 +117,7 @@ export async function getAllBusinessesAction() {
     return {
       status: "500",
       message: "Error fetching businesses",
+      data: [],
     };
   }
 }

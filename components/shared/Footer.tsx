@@ -46,13 +46,13 @@ const Footer = () => {
         <div className="flex flex-col gap-2">
           <h3 className="text-primary-500">Follow Us on</h3>
           <ul className="flex gap-2 mt-2">
-            <li className="social-links-icon">
+            <li className="social-links-icon-footer">
               <FacebookFillIcon />
             </li>
-            <li className="social-links-icon">
+            <li className="social-links-icon-footer">
               <WhatsappFillIcon />
             </li>
-            <li className="social-links-icon">
+            <li className="social-links-icon-footer">
               <InstagramFillIcon />
             </li>
           </ul>

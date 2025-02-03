@@ -38,7 +38,7 @@ const BusinessCard = ({
           height={512}
           className={`${logo ? "p-0" : "p-3.5"} rounded-full size-24 object-cover bg-light-800`}
         />
-        <div>
+        <div className="flex flex-col gap-1">
           <Link
             href={`/business/${_id}`}
             className="font-semibold text-2xl hover:text-primary-500"

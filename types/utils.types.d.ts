@@ -15,6 +15,7 @@ export type TURLProps = {
 };
 
 export interface ISearchParamsProps {
+  [x: string]: any;
   searchParams: { [key: string]: string | undefined };
 }
 

@@ -138,3 +138,26 @@ export const SOCIAL_MEDIA_OPTIONS = [
   { value: "youtube", name: "YouTube" },
   { value: "other", name: "Other" },
 ];
+
+export const NAV_LINKS = [
+  {
+    name: "About",
+    route: "/#aboutus",
+    scroll: true,
+  },
+  {
+    name: "Categories",
+    route: "/#categories",
+    scroll: true,
+  },
+  {
+    name: "Services",
+    route: "/#services",
+    scroll: true,
+  },
+  {
+    name: "Directory",
+    route: "/business-directory/all",
+    scroll: false,
+  },
+];
