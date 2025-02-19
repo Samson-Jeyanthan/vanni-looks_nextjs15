@@ -1,3 +1,8 @@
+import {
+  FacebookFillIcon,
+  InstagramFillIcon,
+  WhatsappFillIcon,
+} from "@/public/svgs";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -31,18 +36,25 @@ const Footer = () => {
         <div className="flex flex-col gap-4">
           <h3 className="text-primary-500">Quick Links</h3>
           <div className="flex flex-col gap-2 text-sm text-light-400">
-            <Link href={"/#aboutus"}>About us</Link>
-            <Link href={"/about"}>Categories</Link>
-            <Link href={"/about"}>Services</Link>
-            <Link href={"/contact"}>Contact us</Link>
+            <Link href="/#aboutus">About us</Link>
+            <Link href="/#categories">Categories</Link>
+            <Link href="/#services">Services</Link>
+            <Link href="/#contact">Contact us</Link>
           </div>
         </div>
 
         <div className="flex flex-col gap-2">
           <h3 className="text-primary-500">Follow Us on</h3>
-          <ul>
-            <li>Facebook</li>
-            <li>Instagram</li>
+          <ul className="flex gap-2 mt-2">
+            <li className="social-links-icon-footer">
+              <FacebookFillIcon />
+            </li>
+            <li className="social-links-icon-footer">
+              <WhatsappFillIcon />
+            </li>
+            <li className="social-links-icon-footer">
+              <InstagramFillIcon />
+            </li>
           </ul>
           <p className="text-xs text-light-400">
             for the Latest Updates and Insights!
@@ -51,8 +63,8 @@ const Footer = () => {
       </div>
 
       <div className="flex-center z-10 w-full border-t border-light-300 pt-8 text-sm text-light-400">
-        © 2024 Vanni Looks. All Rights Reserved. | Designed and Developed By
-        Samson
+        © {new Date().getFullYear()} Vanni Looks. All Rights Reserved. |
+        Designed and Developed By Samson
       </div>
     </footer>
   );

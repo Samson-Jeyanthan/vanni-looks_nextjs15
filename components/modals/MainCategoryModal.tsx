@@ -13,7 +13,7 @@ import {
 } from "../ui/dialog";
 import { MainCategoriesSchema } from "@/lib/validations/admin.validation";
 import { Form, FormField } from "../ui/form";
-import { FormInput, IconInput } from "../inputs";
+import { FormInput, IconMediaInput } from "../inputs";
 import { IMediaProps } from "@/types/utils.types";
 import { Button } from "../ui/button";
 import { createMainCategoryAction } from "@/lib/actions/categories.action";
@@ -84,7 +84,7 @@ const CreateCategory = ({ type }: Props) => {
                 control={form.control}
                 name="iconFile"
                 render={({ field }) => (
-                  <IconInput
+                  <IconMediaInput
                     fieldChange={field.onChange}
                     previousMedia={previousMedia}
                     setPreviousMedia={setPreviousMedia}

@@ -121,3 +121,43 @@ export const LEFT_SIDEBAR_LINKS = [
     route: "/admin/businesses",
   },
 ];
+
+export const PHONE_OPTIONS = [
+  { value: "landline", name: "Landline" },
+  { value: "mobile", name: "Mobile" },
+  { value: "whatsapp", name: "WhatsApp" },
+  { value: "fax", name: "Fax" },
+];
+
+export const SOCIAL_MEDIA_OPTIONS = [
+  { value: "facebook", name: "Facebook" },
+  { value: "twitter", name: "Twitter" },
+  { value: "instagram", name: "Instagram" },
+  { value: "linkedin", name: "LinkedIn" },
+  { value: "github", name: "GitHub" },
+  { value: "youtube", name: "YouTube" },
+  { value: "other", name: "Other" },
+];
+
+export const NAV_LINKS = [
+  {
+    name: "About",
+    route: "/#aboutus",
+    scroll: true,
+  },
+  {
+    name: "Categories",
+    route: "/#categories",
+    scroll: true,
+  },
+  {
+    name: "Services",
+    route: "/#services",
+    scroll: true,
+  },
+  {
+    name: "Directory",
+    route: "/business-directory/all",
+    scroll: false,
+  },
+];

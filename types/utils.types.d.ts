@@ -15,6 +15,7 @@ export type TURLProps = {
 };
 
 export interface ISearchParamsProps {
+  [x: string]: any;
   searchParams: { [key: string]: string | undefined };
 }
 
@@ -23,7 +24,25 @@ export interface IParamsProps {
 }
 
 export interface IMediaProps {
-  mediaType: "image" | "video" | "audio" | "pdf" | "svg";
+  mediaType: "image" | "video" | "audio" | "pdf" | "svg" | "youtube-url";
   mediaURL: string;
   thumbnailURL: string;
 }
+
+export type TSocialLinksProps = {
+  name:
+    | "FACEBOOK"
+    | "TWITTER"
+    | "INSTAGRAM"
+    | "LINKEDIN"
+    | "GITHUB"
+    | "YOUTUBE"
+    | "PORTFOLIO"
+    | "OTHER";
+  url: string;
+};
+
+export type TPhoneProps = {
+  number: string;
+  type: "LANDLINE" | "MOBILE" | "FAX" | "WHATSAPP";
+};
