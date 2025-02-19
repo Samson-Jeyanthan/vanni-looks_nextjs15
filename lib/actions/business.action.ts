@@ -4,9 +4,11 @@ import { revalidatePath } from "next/cache";
 import { connectToDatabase } from "../mongoose";
 import { TBusinessParams } from "./shared.types";
 import Business from "@/database/business.model";
+import MainCategory from "@/database/mainCategory.model";
+import SubCategory from "@/database/subCategory.model";
 import City from "@/database/city.model";
 import District from "@/database/district.model";
-import MainCategory from "@/database/mainCategory.model";
+import { FilterQuery } from "mongoose";
 
 export async function createBusinessAction(params: TBusinessParams) {
   console.log(params);
@@ -67,13 +69,34 @@ export async function createBusinessAction(params: TBusinessParams) {
   }
 }
 
-export async function getAllBusinessesAction() {
+export async function getAllBusinessesAction(params: any) {
   try {
     connectToDatabase();
 
-    const businesses = await Business.find()
+    const { searchQuery, filter } = params;
+
+    const query: FilterQuery<typeof Business> = {};
+
+    if (searchQuery) {
+      query.$or = [
+        { name: { $regex: new RegExp(searchQuery, "i") } },
+        { description: { $regex: new RegExp(searchQuery, "i") } },
+      ];
+    }
+
+    const businesses = await Business.find(query)
       .sort({
         createdAt: -1,
+      })
+      .populate({
+        path: "mainCategoryId",
+        model: MainCategory,
+        select: "_id title",
+      })
+      .populate({
+        path: "subCategoryId",
+        model: SubCategory,
+        select: "_id title",
       })
       .populate({
         path: "cityId",
@@ -82,11 +105,6 @@ export async function getAllBusinessesAction() {
       .populate({
         path: "districtId",
         model: District,
-      })
-      .populate({
-        path: "mainCategoryId",
-        model: MainCategory,
-        select: "_id title",
       });
 
     return {
@@ -99,6 +117,54 @@ export async function getAllBusinessesAction() {
     return {
       status: "500",
       message: "Error fetching businesses",
+      data: [],
+    };
+  }
+}
+
+export async function getBusinessByIdAction(params: { businessId: string }) {
+  try {
+    connectToDatabase();
+
+    const { businessId } = params;
+
+    const business = await Business.findById(businessId)
+      .populate({
+        path: "cityId",
+        model: City,
+      })
+      .populate({
+        path: "districtId",
+        model: District,
+      })
+      .populate({
+        path: "mainCategoryId",
+        model: MainCategory,
+        select: "_id title icon",
+      })
+      .populate({
+        path: "subCategoryId",
+        model: SubCategory,
+        select: "_id title",
+      });
+
+    if (!business) {
+      return {
+        status: "404",
+        message: "Business not found",
+      };
+    }
+
+    return {
+      status: "200",
+      message: "Business fetched successfully",
+      data: business,
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      status: "500",
+      message: "Error fetching business",
     };
   }
 }

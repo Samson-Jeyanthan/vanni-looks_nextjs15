@@ -1,6 +1,7 @@
 import {
   AboutUs,
   Categories,
+  ContactUs,
   HeroSection,
   LocationCard,
   SaleIncreaseCard,
@@ -18,6 +19,7 @@ const HomePage = async () => {
       <Services />
       <SocialMedia />
       <SaleIncreaseCard />
+      <ContactUs />
     </section>
   );
 };

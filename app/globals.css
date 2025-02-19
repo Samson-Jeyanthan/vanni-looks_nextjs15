@@ -47,6 +47,9 @@ body {
     @apply no-focus border-none bg-transparent placeholder:text-light-400 placeholder:font-medium placeholder:text-sm px-2 py-4 !important;
   }
   .social-links-icon {
+    @apply fill-light-300 hover:fill-primary-500 cursor-pointer;
+  }
+  .social-links-icon-footer {
     @apply fill-light-700 hover:fill-primary-500 cursor-pointer;
   }
   .directory-input {
@@ -54,5 +57,11 @@ body {
   }
   .business-form-sub-heading {
     @apply text-xl font-semibold py-3 border-b border-light-600 w-full text-left mt-8;
+  }
+  .business-card-contact {
+    @apply flex items-center gap-2 text-[13px] hover:text-primary-500/70 cursor-pointer fill-light-600 text-light-300 hover:fill-primary-500/50 w-max;
+  }
+  .business-card-icon {
+    @apply size-6 rounded-full border p-[4px] border-light-700 flex-center;
   }
 }

@@ -95,3 +95,12 @@ export const removeKeysFromQuery = ({
     { skipNull: true }
   );
 };
+
+export const getSinceYear = (date: Date): string => {
+  // Extract the year from the Date object
+  const year = date.getFullYear();
+
+  const sinceYear = `${year}`;
+
+  return sinceYear;
+};

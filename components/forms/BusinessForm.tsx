@@ -20,7 +20,7 @@ import { getSubCategoriesByMainCategoryId } from "@/lib/actions/categories.actio
 import { getCitiesByDistrictIdAction } from "@/lib/actions/location.action";
 import { useState } from "react";
 import { createBusinessAction } from "@/lib/actions/business.action";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { PHONE_OPTIONS, SOCIAL_MEDIA_OPTIONS } from "@/constants";
 import { IMediaProps } from "@/types/utils.types";
@@ -37,6 +37,7 @@ const BusinessForm = ({
   businessDetails,
 }: Props) => {
   const pathname = usePathname();
+  const router = useRouter();
   const parsedBusinessDetails =
     businessDetails && JSON.parse(businessDetails || "");
 
@@ -134,6 +135,7 @@ const BusinessForm = ({
     } else {
       toast.error(res.message, { duration: 5000 });
     }
+    router.push("/admin/businesses");
   }
 
   return (
@@ -197,7 +199,7 @@ const BusinessForm = ({
                 fieldChange={field.onChange}
                 isoDate={form.getValues("establishedDate")}
               />
-              <FormMessage className="shad-auth_form_message -mt-2" />
+              <FormMessage className="text-xs text-red-500 -mt-2" />
             </>
           )}
         />

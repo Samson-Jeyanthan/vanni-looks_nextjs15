@@ -1,5 +1,6 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import {
   FormControl,
   FormDescription,
@@ -16,6 +17,8 @@ interface Props {
   formLabel: string;
   formDescription?: string;
   maxLength: number;
+  customClassName?: string;
+  placeholder?: string;
 }
 
 const TextArea = ({
@@ -24,6 +27,8 @@ const TextArea = ({
   formLabel,
   formDescription,
   maxLength,
+  customClassName,
+  placeholder,
 }: Props) => {
   return (
     <FormField
@@ -37,8 +42,12 @@ const TextArea = ({
           <FormControl>
             <Textarea
               {...field}
-              className="no-focus text-black h-40 resize-none border border-solid border-light-700 bg-light-800 text-sm"
+              className={cn(
+                "no-focus text-black h-40 resize-none border border-solid border-light-700 bg-light-800 text-sm placeholder:text-light-500",
+                customClassName
+              )}
               maxLength={maxLength}
+              placeholder={placeholder}
             />
           </FormControl>
           {formDescription && (

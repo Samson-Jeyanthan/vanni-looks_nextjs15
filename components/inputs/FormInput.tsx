@@ -1,5 +1,6 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import {
   FormControl,
   FormDescription,
@@ -16,6 +17,8 @@ interface Props {
   inputType?: string;
   formLabel: string;
   formDescription?: string;
+  customClassName?: string;
+  placeholder?: string;
 }
 
 const FormInput = ({
@@ -24,6 +27,8 @@ const FormInput = ({
   inputType,
   formLabel,
   formDescription,
+  customClassName,
+  placeholder,
 }: Props) => {
   return (
     <FormField
@@ -43,7 +48,11 @@ const FormInput = ({
                     : e.target.value
                 )
               }
-              className="no-focus text-light-100 bg-light-800 border border-solid border-light-700 text-sm placeholder:text-light-500"
+              placeholder={placeholder}
+              className={cn(
+                "no-focus text-light-100 bg-light-800 border border-solid border-light-700 text-sm placeholder:text-light-500",
+                customClassName
+              )}
             />
           </FormControl>
           {formDescription && (

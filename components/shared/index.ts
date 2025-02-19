@@ -9,3 +9,6 @@ export { default as SocialMedia } from "./landingPage/SocialMedia";
 export { default as SaleIncreaseCard } from "./landingPage/SaleIncreaseCard";
 export { default as CategoriesFilters } from "./filters/CategoriesFilters";
 export { default as DistrictsFilters } from "./filters/DistrictsFilters";
+export { default as LocalSearchbar } from "./search/LocalSearchbar";
+export { default as NoResult } from "./NoResult";
+export { default as ContactUs } from "./landingPage/ContactUs";
