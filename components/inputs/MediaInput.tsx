@@ -66,7 +66,7 @@ const MediaInput = ({
           alt="first-image"
           width={1024}
           height={1024}
-          className="h-96 w-full rounded-lg object-cover"
+          className="h-96 w-full rounded-xl object-contain bg-black"
         />
         <span
           className="absolute right-2 top-2 cursor-pointer rounded-full bg-light-500 p-1.5 text-lg"
@@ -79,21 +79,25 @@ const MediaInput = ({
   };
 
   return (
-    <div className="flex w-full flex-col gap-4">
-      <input
-        type="file"
-        ref={photoRef}
-        hidden
-        onChange={handleInputChange}
-        accept="image/jpeg,image/jpg,image/png,image/webp"
-        multiple
-      />
-      <div
-        className="text-dark-300_light-750 flex-center h-72 w-full cursor-pointer gap-2 rounded-2xl border border-dashed border-light-500 bg-transparent text-sm dark:border-dark-400"
-        onClick={handleInputBtn}
-      >
-        Click here to add files
-      </div>
+    <div className="flex w-full flex-col gap-6">
+      {allMedia === 0 && (
+        <>
+          <input
+            type="file"
+            ref={photoRef}
+            hidden
+            onChange={handleInputChange}
+            accept="image/jpeg,image/jpg,image/png,image/webp"
+            multiple
+          />
+          <div
+            className="text-dark-300_light-750 flex-center h-72 w-full cursor-pointer gap-2 rounded-2xl border border-dashed border-light-500 bg-transparent text-sm dark:border-dark-400"
+            onClick={handleInputBtn}
+          >
+            Click here to add files
+          </div>
+        </>
+      )}
 
       <div>
         {allMedia > 0 && selectedItem.isURL ? (

@@ -270,8 +270,16 @@ const BusinessForm = ({
           />
         </div>
 
-        <ArrayInput formLabel="Phone" options={PHONE_OPTIONS} />
-        <ArrayInput formLabel="Social Links" options={SOCIAL_MEDIA_OPTIONS} />
+        <ArrayInput
+          formLabel="Phone"
+          options={PHONE_OPTIONS}
+          inputPlaceholder="Enter the number"
+        />
+        <ArrayInput
+          formLabel="Social Links"
+          options={SOCIAL_MEDIA_OPTIONS}
+          inputPlaceholder="Paste the link"
+        />
 
         <h2 className="business-form-sub-heading">
           Media Files
@@ -290,9 +298,13 @@ const BusinessForm = ({
           )}
         />
 
-        <Button className="bg-primary-500 text-light-900 w-full">
-          Add Business
-        </Button>
+        <footer className="w-full flex-center gap-3 flex-col mt-8">
+          <Button className="bg-primary-500 text-light-900 w-full">
+            Add Business
+          </Button>
+
+          <Button className="w-max">Cancel</Button>
+        </footer>
       </form>
     </Form>
   );

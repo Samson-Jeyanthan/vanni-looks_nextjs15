@@ -33,15 +33,21 @@ export const MediaFileSchema = z.object({
 });
 
 export const BusinessSchema = z.object({
-  businessName: z.string().min(3).max(130),
+  businessName: z
+    .string()
+    .min(3, { message: "Business name is required" })
+    .max(130),
   businessLogo: z.custom<File[]>().optional(),
   coverPhoto: z.custom<File[]>().optional(),
-  description: z.string().min(3).max(1000),
-  address: z.string().min(3).max(130),
-  district: z.string().min(3),
-  city: z.string().min(1),
-  mainCategory: z.string().min(1),
-  subCategory: z.string().min(1),
+  description: z
+    .string()
+    .min(3, { message: "Description is required" })
+    .max(1000),
+  address: z.string().min(3, { message: "Address is required" }).max(130),
+  district: z.string().min(3, { message: "District is required" }),
+  city: z.string().min(1, { message: "City is required" }),
+  mainCategory: z.string().min(1, { message: "Main category is required" }),
+  subCategory: z.string().min(1, { message: "Sub category is required" }),
   establishedDate: z.string().min(1, { message: "Date is required" }),
   website: z.string().optional(),
   email: z.string().email().optional(),

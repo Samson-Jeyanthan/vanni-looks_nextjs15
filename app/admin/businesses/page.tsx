@@ -15,7 +15,7 @@ import Link from "next/link";
 import { FaPlus } from "react-icons/fa6";
 
 const Businesses = async () => {
-  const results = await getAllBusinessesAction();
+  const results = await getAllBusinessesAction("");
   return (
     <section className="w-full flex-col flex gap-8">
       <h1 className="text-3xl font-bold">Businesses</h1>
