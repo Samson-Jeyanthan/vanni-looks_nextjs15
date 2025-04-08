@@ -6,6 +6,8 @@ interface CategoriesProps {
   icon: string;
 }
 
+const sampleArray = [0, 1.6, 2.5];
+
 export const CategoriesData: CategoriesProps[] = [
   {
     title: "Grocery Stores",
