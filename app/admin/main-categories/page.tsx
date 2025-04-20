@@ -43,13 +43,16 @@ const MainCategories = async () => {
         </TableHeader>
         <TableBody>
           {results?.data?.map((data, index) => (
-            <TableRow key={index} className="hover:bg-light-750">
+            <TableRow key={data._id} className="hover:bg-light-750">
               <TableCell>{index + 1}</TableCell>
               <TableCell>{data.icon?.mediaType}</TableCell>
               <TableCell>{data.title}</TableCell>
               <TableCell>{getConvertedDate(data.createdAt)}</TableCell>
               <TableCell className="flex justify-end">
-                <AdminEditActionBtns />
+                <AdminEditActionBtns
+                  type="MainCategory"
+                  stringifiedData={JSON.stringify(results?.data)}
+                />
               </TableCell>
             </TableRow>
           ))}

@@ -3,7 +3,7 @@
 import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 import { MdDelete, MdEdit } from "react-icons/md";
-import { DisctrictModal } from "../modals";
+import { DisctrictModal, MainCategoryModal } from "../modals";
 
 type Props = {
   type: "District" | "City" | "MainCategory" | "SubCategory";
@@ -17,6 +17,7 @@ const AdminEditActionBtns = ({ type, stringifiedData }: Props) => {
         {type === "District" && (
           <DisctrictModal type="edit" districtDetails={stringifiedData} />
         )}
+        {type === "MainCategory" && <MainCategoryModal type="edit" />}
       </div>
 
       <div className="text-xl cursor-pointer px-2 hover:text-light-100 text-red-600">
